@@ -1,7 +1,7 @@
 
 from matplotlib import pyplot as plt, ticker
 import numpy as np
-plt.figure(figsize=(32, 9))
+plt.figure(figsize=(16, 9))
 a = np.array(
     [3823, 1890, 1347, 1556, 1793, 1981, 2240, 2371, 2576, 2803, 3065, 3256, 1471, 1663, 1878, 2098, 2288, 2450, 2706,
      2928, 3170, 3350, 3580, 1833, 2015, 1527, 1575, 1710, 1788, 1835, 1234, 1417, 1440, 1535, 1624, 1714, 1826, 1276,
@@ -56,10 +56,11 @@ a = np.array(
      2573, 2768, 3020, 3215, 3451, 1626, 1819, 2047, 2236, 2363, 2492, 2715, 2952, 3174, 3377, 3602, 1766, 1979, 2205,
      2429, 2593, 2825, 3006, 3269, 3493, 1672, 1899, 2021, 2276, 2505, 2728, 2929, 3135, 1316, 1535, 1707, 1907, 2159])
 bins = []
-for i in range(0, 90):
-    bins.insert(i, 1000 + i * 100)
-plt.locator_params('x', nbins=90)
-plt.locator_params('y', nbins=30)
+for i in range(0, 51):
+    bins.append(i * 200)
+plt.locator_params('x', nbins=20)
+plt.locator_params('y', nbins=50)
+plt.xlim(0, 10000)
 font1 = {'family': 'Times New Roman',
          'weight': 'normal',
          'size': 23,
