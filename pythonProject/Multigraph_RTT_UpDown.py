@@ -4,7 +4,9 @@ import numpy as np
 from datetime import datetime
 import pandas as pd
 
-plt.figure(figsize=(32, 9))
+fig, axes = plt.subplots(2, 1, sharex=True, figsize=(20, 9))
+ax1 = axes[0]
+
 dates = [datetime(2020, 12, 11, 11, 40, 18, 263), datetime(2020, 12, 11, 11, 40, 38, 365),
          datetime(2020, 12, 11, 11, 40, 49, 148), datetime(2020, 12, 11, 11, 41, 1, 228),
          datetime(2020, 12, 11, 11, 41, 13, 315), datetime(2020, 12, 11, 11, 41, 25, 414),
@@ -1652,46 +1654,6 @@ DownLink_dates = [datetime(2020, 12, 11, 11, 40, 21, 765), datetime(2020, 12, 11
                   datetime(2020, 12, 11, 15, 12, 21, 923), datetime(2020, 12, 11, 15, 12, 34, 84),
                   datetime(2020, 12, 11, 15, 12, 46, 260), datetime(2020, 12, 11, 15, 12, 58, 404),
                   datetime(2020, 12, 11, 15, 13, 10, 563)]
-print("DownLink_value : ", len(DownLink_value))
-print("DownLink_dates : ", len(DownLink_dates))
-bins = []
-j = 0
-cha = (datetime(2020, 12, 11, 15, 13, 9, 275) - datetime(2020, 12, 11, 11, 40, 18, 263)) / 20
-for i in range(0, 21):
-    ii = datetime(2020, 12, 11, 11, 40, 18, 263) + cha * i
-    bins.append(ii)
-print("len of bins : ", len(bins))
-print(bins)
-df = pd.DataFrame({"dates": dates, "values": values})
-df2 = pd.DataFrame({"dates": UpLink_dates, "values": UpLink_value})
-df3 = pd.DataFrame({"dates": DownLink_dates, "values": DownLink_value})
-ax = plt.gca()
-ax.locator_params('y', nbins=20)
-steps = [0.4, 0.6, 0.8]
-ax.locator_params('x', )
-plt.ylim(0, 10000)
-plt.xlim(datetime(2020, 12, 11, 11, 40, 18, 263), datetime(2020, 12, 11, 15, 13, 9, 275))
-ax = plt.gca()
-# date_format = matplotlib.dates.DateFormatter('%Y-%m-%d-%H-%M-%S')
-date_format = matplotlib.dates.DateFormatter('%H:%M:%S')
-ax.xaxis.set_major_formatter(date_format)
-plt.xticks(bins, size=15, rotation=15)
-plt.yticks(size=15)
-font1 = {'family': 'Times New Roman',
-         'weight': 'normal',
-         'size': 23,
-         }
-plt.xlabel("Time", font1)
-plt.ylabel("RTT/ms", font1, rotation=0, loc='top')
-# plt.plot(df["dates"], df["values"], label="RTT", color="b")
-# plt.plot(df2["dates"], df2["values"], label="UpLink", color="y")
-# plt.plot(df3["dates"], df3["values"], label="DownLink", color="g")
-plt.scatter(df["dates"], df["values"], s=10, color='b', label="RTT")
-plt.scatter(df2["dates"], df2["values"], s=10, color='y', label="UpLink")
-plt.scatter(df3["dates"], df3["values"], s=10, color='g', label="DownLink")
-# plt.scatter(df["dates"], df["values"], s=10, color='b')
-# plt.scatter(df2["dates"], df2["values"], s=10, color='y')
-# plt.scatter(df3["dates"], df3["values"], s=10, color='g')
 RTT_lost = [datetime(2020, 12, 11, 11, 45, 26, 785), datetime(2020, 12, 11, 12, 41, 10, 132),
             datetime(2020, 12, 11, 12, 41, 22, 183), datetime(2020, 12, 11, 12, 45, 35, 753),
             datetime(2020, 12, 11, 12, 45, 47, 844), datetime(2020, 12, 11, 12, 45, 59, 961),
@@ -1699,10 +1661,61 @@ RTT_lost = [datetime(2020, 12, 11, 11, 45, 26, 785), datetime(2020, 12, 11, 12, 
             datetime(2020, 12, 11, 13, 17, 58, 995), datetime(2020, 12, 11, 13, 18, 11, 96),
             datetime(2020, 12, 11, 13, 18, 23, 120), datetime(2020, 12, 11, 13, 18, 35, 184),
             datetime(2020, 12, 11, 13, 46, 2, 480), datetime(2020, 12, 11, 14, 46, 11, 716)]
-plt.vlines(RTT_lost, 0, 10000, color='r', label="Packet loss")
-plt.legend(loc=1, prop={'size': 20})
-plt.savefig('sandian.jpg')
+IPchange = [datetime(2020, 12, 11, 11, 40, 21, 764), datetime(2020, 12, 11, 11, 45, 40, 61),
+            datetime(2020, 12, 11, 12, 46, 13, 304), datetime(2020, 12, 11, 13, 46, 15, 880),
+            datetime(2020, 12, 11, 14, 46, 33, 946)]
+UPLink_loss_time = [datetime(2020, 12, 11, 11, 45, 26, 785), datetime(2020, 12, 11, 12, 41, 10, 132), datetime(2020, 12, 11, 12, 41, 22, 183), datetime(2020, 12, 11, 12, 45, 35, 753), datetime(2020, 12, 11, 12, 45, 47, 844), datetime(2020, 12, 11, 12, 45, 59, 961), datetime(2020, 12, 11, 13, 17, 34, 871), datetime(2020, 12, 11, 13, 17, 46, 896), datetime(2020, 12, 11, 13, 17, 58, 995), datetime(2020, 12, 11, 13, 18, 11, 96), datetime(2020, 12, 11, 13, 18, 23, 120), datetime(2020, 12, 11, 13, 18, 35, 184), datetime(2020, 12, 11, 13, 46, 2, 480), datetime(2020, 12, 11, 14, 46, 11, 716)]
+find_highdelay = []
+for i in range(0, len(values)):
+    if values[i] > 10000:
+        find_highdelay.append(i)
+for i in find_highdelay:
+    print(dates[i])
+
+
+
+bins = []
+cha = (datetime(2020, 12, 11, 15, 13, 9, 275) - datetime(2020, 12, 11, 11, 40, 18, 263)) / 20
+for i in range(0, 21):
+    ii = datetime(2020, 12, 11, 11, 40, 18, 263) + cha * i
+    bins.append(ii)
+ax1.locator_params('y', nbins=20)
+ax1.set_ylim(0, 6000)
+ax1.set_xlim(datetime(2020, 12, 11, 11, 40, 18, 263), datetime(2020, 12, 11, 15, 13, 9, 275))
+# date_format = matplotlib.dates.DateFormatter('%Y-%m-%d-%H-%M-%S')
+date_format = matplotlib.dates.DateFormatter('%H:%M:%S')
+font1 = {'family': 'Times New Roman',
+         'weight': 'normal',
+         'size': 20,
+         }
+ax1.xaxis.set_major_formatter(date_format)
+
+df = pd.DataFrame({"dates": dates, "values": values})
+ax1.plot(df["dates"], df["values"], label="RTT", color="b")
+# ax1.scatter(df["dates"], df["values"], s=10, color='b')
+ax1.vlines(RTT_lost, 0, 10000, color='r', label="Packet loss\nUpLink loss")
+ax1.legend(loc=1, prop={'size': 15})
+
+
+
+
+ax2 = axes[1]
+df2 = pd.DataFrame({"dates": UpLink_dates, "values": UpLink_value})
+df3 = pd.DataFrame({"dates": DownLink_dates, "values": DownLink_value})
+ax2.plot(df2["dates"], df2["values"], label="UpLink", color="y")
+ax2.plot(df3["dates"], df3["values"], label="DownLink", color="g")
+ax2.locator_params('y', nbins=20)
+ax2.set_xlim(datetime(2020, 12, 11, 11, 40, 18, 263), datetime(2020, 12, 11, 15, 13, 9, 275))
+ax2.xaxis.set_major_formatter(date_format)
+plt.xticks(bins, size=10, rotation=15)
+# ax2.scatter(df2["dates"], df2["values"], s=10, color='y')
+# ax2.scatter(df3["dates"], df3["values"], s=10, color='g')
+ax2.set_ylim(0, 6000)
+ax2.vlines(IPchange, 0, 6000, color='#F19EC2', label="IP change", linestyle='-.', linewidths=3)
+# ax2.vlines(UPLink_loss_time, 0, 6000, color='r', label="UpLink loss")
+ax2.legend(loc=1, prop={'size': 15})
+
+ax2.set_xlabel("Time", font1)
+ax1.set_ylabel("RTT/ms", font1, rotation=0, loc='top')
+
 plt.show()
-
-
-

@@ -3,6 +3,7 @@ import matplotlib
 import numpy as np
 from datetime import datetime
 import pandas as pd
+
 values = [3823, 1890, 1347, 1556, 1793, 1981, 2240, 2371, 2576, 2803, 3065, 3256, 1471, 1663, 1878, 2098, 2288, 2450,
           2706, 2928, 3170, 3350, 3580, 1833, 2015, 1527, 1575, 1710, 1788, 1835, 1234, 1417, 1440, 1535, 1624, 1714,
           1826, 1276, 1348, 1516, 1542, 1611, 1782, 1384, 1262, 1440, 1506, 1560, 1685, 1737, 1140, 1258, 1366, 1518,
@@ -66,8 +67,8 @@ print("var() : ", np.var(values))
 values.sort()
 print(values)
 print("len of values : ", len(values))
-CDF=[]
-cha = 1/len(values)
+CDF = []
+cha = 1 / len(values)
 print("cha", cha)
 for i in range(1, len(values) + 1):
     CDF.append(i * cha)
@@ -136,7 +137,7 @@ sum_UpLink_value = 0
 for i in UpLink_value:
     sum_UpLink_value += i
 CDF_UpLink = []
-cha_UL = 1/len(UpLink_value)
+cha_UL = 1 / len(UpLink_value)
 for i in range(1, len(UpLink_value) + 1):
     CDF_UpLink.append(i * cha_UL)
 
@@ -198,18 +199,29 @@ sum_DownLink_value = 0
 for i in DownLink_value:
     sum_DownLink_value += i
 CDF_DownLink = []
-cha_DL = 1/len(DownLink_value)
+cha_DL = 1 / len(DownLink_value)
 for i in range(1, len(DownLink_value) + 1):
     CDF_DownLink.append(i * cha_DL)
 
+UpLink_value_lg = []
+DownLink_value_lg = []
+value_lg = []
+for i in values:
+    value_lg.append(np.math.log(i, 10))
+for i in UpLink_value:
+    UpLink_value_lg.append(np.math.log(i, 10))
+for i in DownLink_value:
+    DownLink_value_lg.append(np.math.log(i, 10))
+print(UpLink_value_lg)
+print(DownLink_value_lg)
 
 plt.locator_params('y', nbins=20)
 plt.locator_params('x', nbins=10)
-plt.plot(values, CDF, color="b", label="RTT")
-plt.plot(UpLink_value, CDF_UpLink, color='y', label="UpLink")
-plt.plot(DownLink_value, CDF_DownLink, color='g', label="DownLink")
+plt.plot(value_lg, CDF, color="b", label="RTT")
+plt.plot(UpLink_value_lg, CDF_UpLink, color='y', label="UpLink")
+plt.plot(DownLink_value_lg, CDF_DownLink, color='g', label="DownLink")
 plt.legend(loc=4, prop={'size': 15})
-plt.xlim(0, 4000)
+# plt.xlim(0, 4000)
 plt.ylim(0, 1.0)
 plt.savefig("1000_NB_UDP_REG_CDF.jpg")
 plt.show()
