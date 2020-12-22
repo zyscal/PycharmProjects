@@ -1717,5 +1717,5 @@ ax2.legend(loc=1, prop={'size': 15})
 
 ax2.set_xlabel("Time", font1)
 ax1.set_ylabel("RTT/ms", font1, rotation=0, loc='top')
-
+plt.savefig('1000RTT.jpg')
 plt.show()
