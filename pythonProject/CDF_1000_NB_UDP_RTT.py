@@ -212,16 +212,46 @@ for i in UpLink_value:
     UpLink_value_lg.append(np.math.log(i, 10))
 for i in DownLink_value:
     DownLink_value_lg.append(np.math.log(i, 10))
+
+half_RTT_LG_point = 0
+
+for i in range(0, len(CDF) + 1):
+    if CDF[i] >= 0.5:
+        half_RTT_LG_point = i
+        print("point : ", half_RTT_LG_point)
+        print("CDFi : ", CDF[i])
+        break
+half_RTT_LG_line = []
+half_RTT_LG_line.append(value_lg[half_RTT_LG_point])
+
+plt.vlines(half_RTT_LG_line, 0, 1, color='r', label="Median line", linewidths=0.8)
+
+
+
+
 print(UpLink_value_lg)
 print(DownLink_value_lg)
 
-plt.locator_params('y', nbins=20)
-plt.locator_params('x', nbins=10)
+plt.locator_params('y', nbins=10)
+plt.locator_params('x', nbins=15)
 plt.plot(value_lg, CDF, color="b", label="RTT")
 plt.plot(UpLink_value_lg, CDF_UpLink, color='y', label="UpLink")
 plt.plot(DownLink_value_lg, CDF_DownLink, color='g', label="DownLink")
+
+font1 = {'family': 'Times New Roman',
+         'weight': 'normal',
+         'size': 15,
+         }
 plt.legend(loc=4, prop={'size': 15})
+plt.ylabel("CDF", font1, loc='top', rotation = 0)
+plt.xlabel("lg(ms)", font1)
 # plt.xlim(0, 4000)
 plt.ylim(0, 1.0)
-plt.savefig("1000_NB_UDP_REG_CDF.jpg")
+font2 = {'family': 'Times New Roman',
+         'weight': 'normal',
+         'size': 15,
+         }
+plt.title("1001-NB-UDP-REG-CDF", font2)
+
+plt.savefig("1001-NB-UDP-REG-CDF.jpg")
 plt.show()

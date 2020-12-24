@@ -1683,9 +1683,9 @@ font1 = {'family': 'Times New Roman',
          }
 plt.xlabel("Time", font1)
 plt.ylabel("RTT/ms", font1, rotation=0, loc='top')
-# plt.plot(df["dates"], df["values"], label="RTT", color="b")
-# plt.plot(df2["dates"], df2["values"], label="UpLink", color="y")
-# plt.plot(df3["dates"], df3["values"], label="DownLink", color="g")
+plt.plot(df["dates"], df["values"], color="b")
+plt.plot(df2["dates"], df2["values"], color="y")
+plt.plot(df3["dates"], df3["values"], color="g")
 plt.scatter(df["dates"], df["values"], s=10, color='b', label="RTT")
 plt.scatter(df2["dates"], df2["values"], s=10, color='y', label="UpLink")
 plt.scatter(df3["dates"], df3["values"], s=10, color='g', label="DownLink")

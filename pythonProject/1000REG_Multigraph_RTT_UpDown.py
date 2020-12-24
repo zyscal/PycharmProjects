@@ -1692,7 +1692,7 @@ ax1.xaxis.set_major_formatter(date_format)
 
 df = pd.DataFrame({"dates": dates, "values": values})
 ax1.plot(df["dates"], df["values"], label="RTT", color="b")
-# ax1.scatter(df["dates"], df["values"], s=10, color='b')
+ax1.scatter(df["dates"], df["values"], s=10, color='b')
 ax1.vlines(RTT_lost, 0, 10000, color='r', label="Packet loss\nUpLink loss")
 ax1.legend(loc=1, prop={'size': 15})
 
@@ -1708,8 +1708,8 @@ ax2.locator_params('y', nbins=20)
 ax2.set_xlim(datetime(2020, 12, 11, 11, 40, 18, 263), datetime(2020, 12, 11, 15, 13, 9, 275))
 ax2.xaxis.set_major_formatter(date_format)
 plt.xticks(bins, size=10, rotation=15)
-# ax2.scatter(df2["dates"], df2["values"], s=10, color='y')
-# ax2.scatter(df3["dates"], df3["values"], s=10, color='g')
+ax2.scatter(df2["dates"], df2["values"], s=10, color='y')
+ax2.scatter(df3["dates"], df3["values"], s=10, color='g')
 ax2.set_ylim(0, 6000)
 ax2.vlines(IPchange, 0, 6000, color='#F19EC2', label="IP change", linestyle='-.', linewidths=3)
 # ax2.vlines(UPLink_loss_time, 0, 6000, color='r', label="UpLink loss")
@@ -1717,5 +1717,11 @@ ax2.legend(loc=1, prop={'size': 15})
 
 ax2.set_xlabel("Time", font1)
 ax1.set_ylabel("RTT/ms", font1, rotation=0, loc='top')
-plt.savefig('1000RTT.jpg')
+
+font2 = {'family': 'Times New Roman',
+         'weight': 'normal',
+         'size': 25,
+         }
+ax1.set_title("1001 REG RTT/UL/DL", font2)
+plt.savefig('1001 REG RTT_UL_DL.jpg')
 plt.show()

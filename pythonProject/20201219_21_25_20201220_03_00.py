@@ -81,7 +81,7 @@ ax1.xaxis.set_major_formatter(date_format)
 df = pd.DataFrame({"dates": value_port_3323_datetime, "values": value_port_3323})
 ax1.vlines(value_port_3323_lost, 0, 10000, color='r', label="NB_device1 Packet loss")
 ax1.plot(df["dates"], df["values"], label="NB_device1 RTT", color="b")
-# ax1.scatter(df["dates"], df["values"], s=10, color='b')
+ax1.scatter(df["dates"], df["values"], s=5, color='b')
 ax1.legend(loc=1, prop={'size': 15})
 
 
@@ -99,6 +99,7 @@ df = pd.DataFrame({"dates": value_port_3322_datetime, "values": value_port_3322}
 ax3.vlines(value_port_3322_lost, 0, 10000, color='r', label="NB_device2 Packet loss")
 ax3.plot(df["dates"], df["values"], label="NB_device2 RTT", color="b")
 ax3.legend(loc=1, prop={'size': 15})
+
 
 
 ax4 = axes[3]
@@ -130,5 +131,11 @@ plt.xticks(bin2, size=15, rotation=15)
 # ax2.legend(loc=1, prop={'size': 15})
 # ax2.set_xlabel("Time", font1)
 # ax1.set_ylabel("RTT/ms", font1, rotation=0, loc='top')
+font2 = {'family': 'Times New Roman',
+         'weight': 'normal',
+         'size': 25,
+         }
+ax1.set_title("NB_REG_Night", font2)
+ax1.set_ylabel("ms", font1, rotation=0, loc='top')
 plt.savefig('2020119_21_25_2020_1220_03_00.jpg')
 plt.show()
