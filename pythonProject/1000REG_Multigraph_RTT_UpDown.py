@@ -1723,5 +1723,5 @@ font2 = {'family': 'Times New Roman',
          'size': 25,
          }
 ax1.set_title("1001 REG RTT/UL/DL", font2)
-plt.savefig('1001 REG RTT_UL_DL.jpg')
+plt.savefig('JPG/1001 REG RTT_UL_DL.jpg')
 plt.show()
