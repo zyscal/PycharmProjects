@@ -33,7 +33,7 @@ DownLink_3322_datetime = [datetime(2020, 12, 19, 21, 25, 33, 633), datetime(2020
 DownLink_3322_loss = [datetime(2020, 12, 20, 2, 56, 56, 570)]
 IPchange_3322 = [datetime(2020, 12, 19, 21, 25, 32, 314), datetime(2020, 12, 19, 22, 25, 34, 610), datetime(2020, 12, 19, 23, 26, 12, 679), datetime(2020, 12, 20, 0, 26, 38, 465), datetime(2020, 12, 20, 1, 27, 4, 421), datetime(2020, 12, 20, 2, 27, 42, 219)]
 
-sum_3323 = 0;
+sum_3323 = 0
 for i in value_port_3323:
     sum_3323 += i
 
