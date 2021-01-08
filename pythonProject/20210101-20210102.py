@@ -6,8 +6,6 @@ import matplotlib
 from datetime import datetime
 import pandas as pd
 
-list = [1, 2, 3, 4, 5, 6, 7, 8]
-
 
 def twenty_two_to_eight(list):
     everylen = len(list) // 3
@@ -38,8 +36,7 @@ value_UpLink_bc26_24h = []
 datetime_DownLink_bc26_24h = []
 value_DownLink_bc26_24h = []
 
-
-with open('20201231-20210101_datas/RTT_datetime_bc26_20201231-20210101.txt', 'r') as f:
+with open('20210101-20210102_datas/RTT_datetime_bc26_20210101-20210102.txt', 'r') as f:
     datetime_str = f.read().split('\n', -1)
 for i in datetime_str:
     every = i.split(',', -1)
@@ -47,22 +44,22 @@ for i in datetime_str:
                             minute=int(every[4]), second=int(every[5]), microsecond=int(every[6]))
     datetime_bc26_24h.append(tem_datetime)
 
-with open('20201231-20210101_datas/RTT_bc26_20201231-20210101.txt', 'r') as f:
+with open('20210101-20210102_datas/RTT_bc26_20210101-20210102.txt', 'r') as f:
     value_str = f.read().split(',', -1)
 for i in value_str:
     value_bc26_24h.append(int(i))
 
-with open('20201231-20210101_datas/bc26_24h_UpLink_value.txt', 'r') as f:
+with open('20210101-20210102_datas/bc26_24h_UpLink_value.txt', 'r') as f:
     value_str = f.read().split(',', -1)
 for i in value_str:
     value_UpLink_bc26_24h.append(int(i))
 
-with open('20201231-20210101_datas/bc26_24h_DownLink_value.txt', 'r') as f:
+with open('20210101-20210102_datas/bc26_24h_DownLink_value.txt', 'r') as f:
     value_str = f.read().split(',', -1)
 for i in value_str:
     value_DownLink_bc26_24h.append(int(i))
 
-with open('20201231-20210101_datas/bc26_24h_UpLink_datetime.txt', 'r') as f:
+with open('20210101-20210102_datas/bc26_24h_UpLink_datetime.txt', 'r') as f:
     datetime_str = f.read().split('\n', -1)
 for i in datetime_str:
     every = i.split(',', -1)
@@ -70,7 +67,7 @@ for i in datetime_str:
                             minute=int(every[4]), second=int(every[5]), microsecond=int(every[6]))
     datetime_UpLink_bc26_24h.append(tem_datetime)
 
-with open('20201231-20210101_datas/bc26_24h_DownLink_datetime.txt', 'r') as f:
+with open('20210101-20210102_datas/bc26_24h_DownLink_datetime.txt', 'r') as f:
     datetime_str = f.read().split('\n', -1)
 for i in datetime_str:
     every = i.split(',', -1)
@@ -96,7 +93,7 @@ ax1.plot(df1["dates"], df1["values"], label="BC26 RTT", color="b")
 ax1.vlines(IPchange, 0, 6000, color='#F19EC2', label="IP change", linestyle='-.', linewidths=3)
 ax1.vlines(Packet_loss, 0, 10000, color='r', label="BC26 loss")
 ax1.set_xlim(datetime_bc26_0h_8h[0], datetime_bc26_0h_8h[len(datetime_bc26_0h_8h) - 1])
-ax1.set_ylim(0, 12000)
+ax1.set_ylim(0, 6000)
 ax1.locator_params('y', nbins=10)
 
 
@@ -107,7 +104,7 @@ df2_1 = pd.DataFrame({"dates": datetime_UpLink_bc26_0h_8h, "values": value_UpLin
 df2_2 = pd.DataFrame({"dates": datetime_DownLink_bc26_0h_8h, "values": value_DownLink_bc26_0h_8h})
 ax2.plot(df2_2["dates"], df2_2["values"], label="BC26 DownLink", color="g")
 ax2.plot(df2_1["dates"], df2_1["values"], label="BC26 UpLink", color="y")
-
+ax2.set_ylim(0,6000)
 ax2.set_xlim(datetime_UpLink_bc26_0h_8h[0], datetime_UpLink_bc26_0h_8h[len(datetime_UpLink_bc26_0h_8h) - 1])
 
 
@@ -117,7 +114,7 @@ ax3.plot(df3["dates"], df3["values"], label="BC26 RTT", color="b")
 ax3.set_xlim(datetime_bc26_8h_16h[0], datetime_bc26_8h_16h[len(datetime_bc26_8h_16h) - 1])
 ax3.vlines(IPchange, 0, 6000, color='#F19EC2', label="IP change", linestyle='-.', linewidths=3)
 ax3.vlines(Packet_loss, 0, 10000, color='r', label="BC26 loss")
-ax3.set_ylim(0, 6000)
+# ax3.set_ylim(0, 6000)
 ax3.locator_params('y', nbins=10)
 
 ax4 = axes[3]
@@ -125,7 +122,7 @@ df4_1 = pd.DataFrame({"dates": datetime_UpLink_bc26_8h_16h, "values": value_UpLi
 df4_2 = pd.DataFrame({"dates": datetime_DownLink_bc26_8h_16h, "values": value_DownLink_bc26_8h_16h})
 ax4.plot(df4_2["dates"], df4_2["values"], label="BC26 DownLink", color="g")
 ax4.plot(df4_1["dates"], df4_1["values"], label="BC26 UpLink", color="y")
-ax4.set_ylim(0, 6000)
+# ax4.set_ylim(0, 6000)
 ax4.locator_params('y', nbins=10)
 ax4.set_xlim(datetime_UpLink_bc26_8h_16h[0], datetime_UpLink_bc26_8h_16h[len(datetime_UpLink_bc26_8h_16h) - 1])
 
@@ -178,7 +175,7 @@ font2 = {'family': 'Times New Roman',
          'weight': 'normal',
          'size': 45,
          }
-plt.title("BC26 20201231-20210101", font2)
+plt.title("BC26 20210101-20210102", font2)
 plt.sca(axes[2])
 plt.xticks([])
 plt.yticks(size=x_y_ticks_size)
@@ -193,7 +190,7 @@ font1 = {'family': 'Times New Roman',
 
 ax1.set_ylabel("ms", font1, rotation=0, loc='top')
 
+
 str = "JPG/" + os.path.basename(sys.argv[0]).split(".", -1)[0] + ".jpg"
 plt.savefig(str)
-
 plt.show()

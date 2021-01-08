@@ -1,3 +1,6 @@
+import os
+import sys
+
 import matplotlib.pyplot as plt
 import matplotlib
 import numpy as np
@@ -1723,5 +1726,6 @@ font2 = {'family': 'Times New Roman',
          'size': 25,
          }
 ax1.set_title("1001 REG RTT/UL/DL", font2)
-plt.savefig('JPG/1001 REG RTT_UL_DL.jpg')
+str = "JPG/" + os.path.basename(sys.argv[0]).split(".", -1)[0] + ".jpg"
+plt.savefig(str)
 plt.show()

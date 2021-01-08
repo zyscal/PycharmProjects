@@ -1,3 +1,6 @@
+import os
+import sys
+
 import matplotlib.pyplot as plt
 import matplotlib
 import numpy as np
@@ -137,5 +140,6 @@ font2 = {'family': 'Times New Roman',
          }
 ax1.set_title("NB_REG_Night", font2)
 ax1.set_ylabel("ms", font1, rotation=0, loc='top')
-plt.savefig('JPG/2020119_21_25_2020_1220_03_00.jpg')
+str = "JPG/" + os.path.basename(sys.argv[0]).split(".", -1)[0] + ".jpg"
+plt.savefig(str)
 plt.show()

@@ -1,3 +1,6 @@
+import os
+import sys
+
 import matplotlib.pyplot as plt
 import matplotlib
 import numpy as np
@@ -1701,7 +1704,8 @@ RTT_lost = [datetime(2020, 12, 11, 11, 45, 26, 785), datetime(2020, 12, 11, 12, 
             datetime(2020, 12, 11, 13, 46, 2, 480), datetime(2020, 12, 11, 14, 46, 11, 716)]
 plt.vlines(RTT_lost, 0, 10000, color='r', label="Packet loss")
 plt.legend(loc=1, prop={'size': 20})
-plt.savefig('sandian.jpg')
+str = "JPG/" + os.path.basename(sys.argv[0]).split(".", -1)[0] + ".jpg"
+plt.savefig(str)
 plt.show()
 
 
