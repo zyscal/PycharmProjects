@@ -1,3 +1,6 @@
+import os
+import sys
+
 import matplotlib.pyplot as plt
 import matplotlib
 from datetime import datetime
@@ -123,7 +126,8 @@ ax5.tick_params(labelsize=labelsize)
 
 
 ax1.set_title("night_REG_burst", font1)
-plt.savefig('burst.jpg')
+str = "JPG/" + os.path.basename(sys.argv[0]).split(".", -1)[0] + ".jpg"
+plt.savefig(str)
 plt.show()
 
 
