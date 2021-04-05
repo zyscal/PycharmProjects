@@ -1,3 +1,6 @@
+import os
+import sys
+
 import matplotlib.pyplot as plt
 import matplotlib
 import numpy as np
@@ -253,5 +256,6 @@ font2 = {'family': 'Times New Roman',
          }
 plt.title("1001-NB-UDP-REG-CDF", font2)
 
-plt.savefig("1001-NB-UDP-REG-CDF.jpg")
+str = "JPG/" + os.path.basename(sys.argv[0]).split(".", -1)[0] + ".jpg"
+plt.savefig(str)
 plt.show()

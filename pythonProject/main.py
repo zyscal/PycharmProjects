@@ -1,3 +1,5 @@
+import os
+import sys
 
 from matplotlib import pyplot as plt, ticker
 import numpy as np
@@ -70,7 +72,8 @@ plt.ylabel("count( )", font1, rotation=0, loc='top')
 # plt.yticks(rotation=360)
 plt.hist(a, bins)
 plt.title("1000 RTT on NB-iot", font1)
-plt.savefig('testable1.jpg')
+str = "JPG/" + os.path.basename(sys.argv[0]).split(".", -1)[0] + ".jpg"
+plt.savefig(str)
 plt.show()
 
 

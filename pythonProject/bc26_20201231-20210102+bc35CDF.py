@@ -50,19 +50,34 @@ for i in value_str:
 
 ax1 = axes[0][0]
 sum_RTT_20201231 = 0
+sum_big_UL = 0
 for i in value_bc26_20201231_20210101:
     sum_RTT_20201231 += i
+    if i >= 10000:
+        sum_big_UL += 1
 print("avg() : ", sum_RTT_20201231 / len(value_bc26_20201231_20210101))
+print("rate of big_UL", sum_big_UL / len(value_bc26_20201231_20210101))
+sum_UL_20201231 = 0
+for i in value_UpLink_bc26_20201231_20210101:
+    sum_UL_20201231 += i
+print("avg() UL 20201231 : ", sum_UL_20201231 / len(value_UpLink_bc26_20201231_20210101))
+
+sum_DL_20201231 = 0
+for i in value_DownLink_bc26_20201231_20210101:
+    sum_DL_20201231 += i
+print("avg() DL 20201231 : ", sum_DL_20201231 / len(value_DownLink_bc26_20201231_20210101))
+
+
 value_bc26_20201231_20210101.sort()
-print(value_bc26_20201231_20210101)
-print("len of value_bc26_20201231_20210101 : ", len(value_bc26_20201231_20210101))
+#print(value_bc26_20201231_20210101)
+#print("len of value_bc26_20201231_20210101 : ", len(value_bc26_20201231_20210101))
 CDF_20201231 = []
 cha_20201231_RTT = 1 / len(value_bc26_20201231_20210101)
-print("cha", cha_20201231_RTT)
+#print("cha", cha_20201231_RTT)
 for i in range(1, len(value_bc26_20201231_20210101) + 1):
     CDF_20201231.append(i * cha_20201231_RTT)
-print("len of CDF : ", len(CDF_20201231))
-print("CDF_20201231 : ", CDF_20201231)
+#print("len of CDF : ", len(CDF_20201231))
+#print("CDF_20201231 : ", CDF_20201231)
 
 value_UpLink_bc26_20201231_20210101.sort()
 sum_20210101_UpLink_value = 0
@@ -122,17 +137,17 @@ ax2 = axes[0][1]
 sum_RTT_20210101 = 0
 for i in value_bc26_20210101_20210102:
     sum_RTT_20210101 += i
-print("avg() : ", sum_RTT_20210101 / len(value_bc26_20210101_20210102))
+#print("avg() : ", sum_RTT_20210101 / len(value_bc26_20210101_20210102))
 value_bc26_20210101_20210102.sort()
-print(value_bc26_20210101_20210102)
-print("len of value_bc26_20210101_20210102 : ", len(value_bc26_20210101_20210102))
+#print(value_bc26_20210101_20210102)
+#print("len of value_bc26_20210101_20210102 : ", len(value_bc26_20210101_20210102))
 CDF_20210101 = []
 cha_20210101_RTT = 1 / len(value_bc26_20210101_20210102)
-print("cha", cha_20210101_RTT)
+#print("cha", cha_20210101_RTT)
 for i in range(1, len(value_bc26_20210101_20210102) + 1):
     CDF_20210101.append(i * cha_20210101_RTT)
-print("len of CDF : ", len(CDF_20210101))
-print("CDF_20210101 : ", CDF_20210101)
+#print("len of CDF : ", len(CDF_20210101))
+#print("CDF_20210101 : ", CDF_20210101)
 
 value_UpLink_bc26_20210101_20210102.sort()
 sum_20201231_UpLink_value = 0
@@ -206,17 +221,17 @@ ax3 = axes[1][0]
 sum_3323_RTT = 0
 for i in value_port_3323:
     sum_3323_RTT += i
-print("avg() : ", sum_3323_RTT / len(value_port_3323))
+#print("avg() : ", sum_3323_RTT / len(value_port_3323))
 value_port_3323.sort()
-print(value_port_3323)
-print("len of value_port_3323 : ", len(value_port_3323))
+#print(value_port_3323)
+#print("len of value_port_3323 : ", len(value_port_3323))
 CDF_3323_RTT = []
 cha_3323_RTT = 1 / len(value_port_3323)
-print("cha", cha_3323_RTT)
+#print("cha", cha_3323_RTT)
 for i in range(1, len(value_port_3323) + 1):
     CDF_3323_RTT.append(i * cha_3323_RTT)
-print("len of CDF : ", len(CDF_3323_RTT))
-print("CDF_3323_RTT : ", CDF_3323_RTT)
+#print("len of CDF : ", len(CDF_3323_RTT))
+#print("CDF_3323_RTT : ", CDF_3323_RTT)
 
 UpLink_3323_value.sort()
 sum_3323_UpLink_value = 0
@@ -280,17 +295,17 @@ ax4 = axes[1][1]
 sum_3322_RTT = 0
 for i in value_port_3322:
     sum_3322_RTT += i
-print("avg() : ", sum_3322_RTT / len(value_port_3322))
+#print("avg() : ", sum_3322_RTT / len(value_port_3322))
 value_port_3322.sort()
-print(value_port_3322)
-print("len of value_port_3322 : ", len(value_port_3322))
+#print(value_port_3322)
+#print("len of value_port_3322 : ", len(value_port_3322))
 CDF_3322_RTT = []
 cha_3322_RTT = 1 / len(value_port_3322)
-print("cha", cha_3322_RTT)
+#print("cha", cha_3322_RTT)
 for i in range(1, len(value_port_3322) + 1):
     CDF_3322_RTT.append(i * cha_3322_RTT)
-print("len of CDF : ", len(CDF_3322_RTT))
-print("CDF_3322_RTT : ", CDF_3322_RTT)
+#print("len of CDF : ", len(CDF_3322_RTT))
+#print("CDF_3322_RTT : ", CDF_3322_RTT)
 
 UpLink_3322_value.sort()
 sum_3322_UpLink_value = 0

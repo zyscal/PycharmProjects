@@ -1,3 +1,6 @@
+import os
+import sys
+
 import matplotlib.pyplot as plt
 import matplotlib
 import numpy as np
@@ -165,6 +168,7 @@ plt.ylim(0, 1.0)
 ax1.set_title("NBdevice1 RTT_UL_DL_CDF")
 ax2.set_title("NBdevice2 RTT_UL_DL_CDF")
 
-# plt.savefig("20201219_21_25_20201220_03_CDF.jpg")
+str = "JPG/" + os.path.basename(sys.argv[0]).split(".", -1)[0] + ".jpg"
+plt.savefig(str)
 plt.xlim(0, 6.0)
 plt.show()
