@@ -1,0 +1,12 @@
+size of sender : 288
+num_of_sender : 288
+the abnormal delay : 18318
+the abnormal send_time : 2021,02,22,1,2,7,958
+the abnormal recv_time : 2021,02,22,1,2,26,276
+----------------
+18318
+AVG() delay : 1706.3522
+SD : 1152.1657866817604
+num of big_delay : 1
+big_delay : 0.0035211267
+loss : 0.013888889

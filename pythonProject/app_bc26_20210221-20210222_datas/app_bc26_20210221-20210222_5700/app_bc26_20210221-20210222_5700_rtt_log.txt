@@ -1,0 +1,12 @@
+CON_list length : 7
+ACK_list length : 2
+all CONs : 4636
+retransmission : 28
+RTT AVG() : 2783
+rate of retransmission :0.0060396893
+rate of lost : 0.001078516
+retransmission_cause_of_small_RTO : 25
+rate of retransmission_cause_of_small_RTO : 0.00539258
+withour retransmission the CONs : 4608
+the whole packet loss num : 0
+the whole packet loss rate : 0.0

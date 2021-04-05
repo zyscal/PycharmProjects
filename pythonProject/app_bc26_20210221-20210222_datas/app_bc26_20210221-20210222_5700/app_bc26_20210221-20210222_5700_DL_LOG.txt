@@ -1,0 +1,36 @@
+size of sender : 4608
+num_of_sender : 4631
+the abnormal delay : 17693
+the abnormal send_time : 2021,02,22,0,57,35,814
+the abnormal recv_time : 2021,02,22,0,57,53,507
+----------------
+the abnormal delay : 12657
+the abnormal send_time : 2021,02,22,1,36,27,678
+the abnormal recv_time : 2021,02,22,1,36,40,335
+----------------
+the abnormal delay : 10401
+the abnormal send_time : 2021,02,22,1,36,57,61
+the abnormal recv_time : 2021,02,22,1,37,7,462
+----------------
+the abnormal delay : 11964
+the abnormal send_time : 2021,02,22,1,53,23,900
+the abnormal recv_time : 2021,02,22,1,53,35,864
+----------------
+<<<<<<<<something wronge
+<<<<<<<<something wronge
+the abnormal delay : 13074
+the abnormal send_time : 2021,02,22,14,34,58,905
+the abnormal recv_time : 2021,02,22,14,35,11,979
+----------------
+<<<<<<<<something wronge
+<<<<<<<<something wronge
+17693
+12657
+10401
+11964
+13074
+AVG() delay : 996.11694
+SD : 605.8399128482705
+num of big_delay : 5
+big_delay : 0.0010850695
+loss : -8.6374435E-4

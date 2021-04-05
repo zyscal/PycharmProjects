@@ -1,0 +1,3 @@
+UL Packet persecond is : 1.1296376186367558
+UL Byte persecond is : 42.8541846419327
+UL packet persecond before is : 1.066220880069025

@@ -1,0 +1,3 @@
+DL Packet persecond is : 2.0454545454545454
+DL Byte persecond is : 58.25974025974026
+DL Packet persecond is : 2.1785714285714284

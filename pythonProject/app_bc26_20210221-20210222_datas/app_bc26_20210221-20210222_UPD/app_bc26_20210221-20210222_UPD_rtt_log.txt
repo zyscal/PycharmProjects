@@ -1,0 +1,93 @@
+error ACK can not find its CON message
+2021,02,22,19,14,24,52
+CON_list length : 3027
+ACK_list length : 1429
+all CONs : 12604
+retransmission : 1552
+RTT AVG() : 2712
+rate of retransmission :0.123135515
+rate of lost : 0.12678514
+there is maybe a problem , the message id is : 147 20 155 189 214 213 183 105 109 82 
+there is maybe a problem , the message id is : 255 247 175 111 217 248 180 228 197 193 
+there is maybe a problem , the message id is : 237 219 253 128 241 137 91 72 62 34 
+there is maybe a problem , the message id is : 2 15 181 189 24 194 78 94 99 11 
+there is maybe a problem , the message id is : 146 42 200 244 91 72 249 164 60 139 
+there is maybe a problem , the message id is : 248 91 180 86 14 51 1 109 90 100 
+there is maybe a problem , the message id is : 113 164 69 161 212 63 249 126 149 229 
+there is maybe a problem , the message id is : 38 99 171 73 40 167 81 21 221 226 
+there is maybe a problem , the message id is : 77 143 6 242 207 178 134 36 8 60 
+there is maybe a problem , the message id is : 110 116 38 90 235 224 1 250 226 239 
+there is maybe a problem , the message id is : 51 247 94 211 21 127 78 21 235 190 
+there is maybe a problem , the message id is : 156 254 122 14 51 146 91 167 81 49 
+there is maybe a problem , the message id is : 57 217 184 110 157 102 156 143 127 193 
+there is maybe a problem , the message id is : 60 245 22 127 194 189 61 234 13 174 
+there is maybe a problem , the message id is : 91 215 211 212 29 58 33 37 255 174 
+there is maybe a problem , the message id is : 242 208 70 109 33 78 135 134 73 16 
+there is maybe a problem , the message id is : 114 174 71 168 99 123 172 199 134 227 
+there is maybe a problem , the message id is : 170 111 83 22 16 241 167 168 215 52 
+there is maybe a problem , the message id is : 160 242 163 213 14 96 230 149 177 244 
+there is maybe a problem , the message id is : 252 208 156 8 77 127 13 59 29 240 
+there is maybe a problem , the message id is : 77 55 116 154 253 131 166 124 15 23 
+there is maybe a problem , the message id is : 164 187 109 147 254 210 125 217 229 249 
+there is maybe a problem , the message id is : 73 114 179 52 63 248 33 176 24 40 
+there is maybe a problem , the message id is : 251 225 51 209 185 139 70 37 238 112 
+there is maybe a problem , the message id is : 7 197 86 125 209 218 6 230 144 96 
+there is maybe a problem , the message id is : 17 61 80 134 213 57 69 171 110 174 
+there is maybe a problem , the message id is : 111 181 177 146 213 92 211 79 11 55 
+there is maybe a problem , the message id is : 83 135 164 120 96 145 208 118 204 54 
+there is maybe a problem , the message id is : 4 51 57 206 167 16 175 162 14 33 
+there is maybe a problem , the message id is : 184 116 196 152 199 203 139 70 125 98 
+there is maybe a problem , the message id is : 168 25 29 161 16 207 147 58 191 194 
+there is maybe a problem , the message id is : 147 237 49 130 10 244 200 45 124 71 
+there is maybe a problem , the message id is : 158 165 242 246 18 153 22 137 78 83 
+there is maybe a problem , the message id is : 117 35 250 16 17 234 159 201 184 247 
+there is maybe a problem , the message id is : 115 88 123 170 218 201 254 186 13 106 
+there is maybe a problem , the message id is : 90 182 239 85 100 135 208 131 199 169 
+there is maybe a problem , the message id is : 211 209 59 198 48 106 28 181 138 247 
+there is maybe a problem , the message id is : 97 161 116 29 62 161 170 239 162 86 
+there is maybe a problem , the message id is : 43 210 118 207 202 199 147 80 85 233 
+there is maybe a problem , the message id is : 22 198 179 51 174 177 157 80 234 231 
+there is maybe a problem , the message id is : 98 158 31 117 25 111 87 14 229 122 
+there is maybe a problem , the message id is : 115 202 178 156 50 11 192 11 126 63 
+there is maybe a problem , the message id is : 117 22 153 205 160 158 191 6 107 38 
+there is maybe a problem , the message id is : 7 193 54 53 255 160 134 78 155 27 
+there is maybe a problem , the message id is : 242 1 75 116 138 165 133 169 235 70 
+there is maybe a problem , the message id is : 16 61 94 158 82 92 50 2 110 138 
+there is maybe a problem , the message id is : 118 220 95 62 154 177 149 209 245 182 
+there is maybe a problem , the message id is : 242 72 177 133 143 173 156 197 110 234 
+there is maybe a problem , the message id is : 82 72 18 220 229 6 179 5 39 104 
+there is maybe a problem , the message id is : 122 230 174 58 10 198 184 172 9 215 
+there is maybe a problem , the message id is : 130 145 66 133 183 78 254 39 21 13 
+there is maybe a problem , the message id is : 135 235 210 138 96 205 117 155 100 246 
+there is maybe a problem , the message id is : 93 139 128 67 234 17 15 75 226 17 
+there is maybe a problem , the message id is : 158 171 224 117 44 115 131 119 82 176 
+there is maybe a problem , the message id is : 247 81 18 255 212 223 75 143 135 188 
+there is maybe a problem , the message id is : 1 61 190 54 36 64 231 163 231 191 
+there is maybe a problem , the message id is : 39 224 54 112 118 207 56 165 200 123 
+there is maybe a problem , the message id is : 69 112 176 101 14 72 45 125 69 77 
+there is maybe a problem , the message id is : 93 140 70 29 247 85 180 249 142 135 
+there is maybe a problem , the message id is : 54 121 173 255 11 35 162 184 169 0 
+there is maybe a problem , the message id is : 96 239 137 42 205 60 135 147 197 75 
+there is maybe a problem , the message id is : 186 77 11 15 59 114 197 75 188 11 
+there is maybe a problem , the message id is : 193 253 246 3 98 106 147 197 136 99 
+there is maybe a problem , the message id is : 31 89 167 91 133 187 164 202 248 62 
+there is maybe a problem , the message id is : 173 188 187 98 112 164 102 184 103 146 
+there is maybe a problem , the message id is : 240 235 63 184 150 49 10 38 159 29 
+there is maybe a problem , the message id is : 242 231 187 213 60 190 235 34 156 127 
+there is maybe a problem , the message id is : 96 18 121 189 7 37 232 75 130 64 
+there is maybe a problem , the message id is : 1 79 84 104 143 181 49 214 80 121 
+there is maybe a problem , the message id is : 234 14 187 148 21 225 215 92 188 7 
+there is maybe a problem , the message id is : 26 17 180 143 232 225 131 108 61 112 
+there is maybe a problem , the message id is : 208 236 47 114 38 24 92 166 118 157 
+there is maybe a problem , the message id is : 134 141 16 159 254 46 192 13 39 146 
+there is maybe a problem , the message id is : 101 52 11 84 200 214 215 154 62 245 
+there is maybe a problem , the message id is : 81 202 56 4 132 33 242 44 150 238 
+there is maybe a problem , the message id is : 152 149 151 157 26 90 117 56 26 212 
+there is maybe a problem , the message id is : 31 32 168 45 154 29 177 137 36 67 
+there is maybe a problem , the message id is : 156 135 164 99 199 142 205 35 155 69 
+there is maybe a problem , the message id is : 20 181 10 129 172 238 90 26 153 200 
+retransmission_cause_of_small_RTO : 1506
+rate of retransmission_cause_of_small_RTO : 0.11948588
+withour retransmission the CONs : 11052
+the whole packet loss num : 125
+the whole packet loss rate : 0.01131017

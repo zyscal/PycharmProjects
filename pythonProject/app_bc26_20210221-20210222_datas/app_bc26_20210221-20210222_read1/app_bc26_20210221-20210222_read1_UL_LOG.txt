@@ -1,0 +1,7 @@
+size of sender : 291
+num_of_sender : 306
+AVG() delay : 1971.692
+SD : 740.1688996438584
+num of big_delay : 0
+big_delay : 0.0
+loss : 0.006535948

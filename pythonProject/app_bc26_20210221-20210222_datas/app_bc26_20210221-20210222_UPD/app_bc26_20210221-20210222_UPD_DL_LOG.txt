@@ -1,0 +1,117 @@
+size of sender : 6777
+num_of_sender : 11072
+the abnormal delay : 12749
+the abnormal send_time : 2021,02,22,0,53,53,463
+the abnormal recv_time : 2021,02,22,0,54,6,212
+----------------
+the abnormal delay : 10295
+the abnormal send_time : 2021,02,22,0,56,50,915
+the abnormal recv_time : 2021,02,22,0,57,1,210
+----------------
+the abnormal delay : 12774
+the abnormal send_time : 2021,02,22,1,53,29,785
+the abnormal recv_time : 2021,02,22,1,53,42,559
+----------------
+the abnormal delay : 57451
+the abnormal send_time : 2021,02,22,2,13,20,182
+the abnormal recv_time : 2021,02,22,2,14,17,633
+----------------
+the abnormal delay : 53882
+the abnormal send_time : 2021,02,22,2,13,25,732
+the abnormal recv_time : 2021,02,22,2,14,19,614
+----------------
+the abnormal delay : 51003
+the abnormal send_time : 2021,02,22,2,13,34,240
+the abnormal recv_time : 2021,02,22,2,14,25,243
+----------------
+the abnormal delay : 46366
+the abnormal send_time : 2021,02,22,2,13,42,897
+the abnormal recv_time : 2021,02,22,2,14,29,263
+----------------
+the abnormal delay : 29971
+the abnormal send_time : 2021,02,22,2,14,3,292
+the abnormal recv_time : 2021,02,22,2,14,33,263
+----------------
+the abnormal delay : 31831
+the abnormal send_time : 2021,02,22,2,14,3,426
+the abnormal recv_time : 2021,02,22,2,14,35,257
+----------------
+the abnormal delay : 13309
+the abnormal send_time : 2021,02,22,3,49,24,123
+the abnormal recv_time : 2021,02,22,3,49,37,432
+----------------
+the abnormal delay : 17110
+the abnormal send_time : 2021,02,22,3,49,24,316
+the abnormal recv_time : 2021,02,22,3,49,41,426
+----------------
+the abnormal delay : 18939
+the abnormal send_time : 2021,02,22,3,49,24,508
+the abnormal recv_time : 2021,02,22,3,49,43,447
+----------------
+the abnormal delay : 20823
+the abnormal send_time : 2021,02,22,3,49,24,604
+the abnormal recv_time : 2021,02,22,3,49,45,427
+----------------
+the abnormal delay : 22610
+the abnormal send_time : 2021,02,22,3,49,24,827
+the abnormal recv_time : 2021,02,22,3,49,47,437
+----------------
+the abnormal delay : 26557
+the abnormal send_time : 2021,02,22,3,49,24,941
+the abnormal recv_time : 2021,02,22,3,49,51,498
+----------------
+the abnormal delay : 25488
+the abnormal send_time : 2021,02,22,3,49,30,20
+the abnormal recv_time : 2021,02,22,3,49,55,508
+----------------
+the abnormal delay : 19287
+the abnormal send_time : 2021,02,22,3,49,40,259
+the abnormal recv_time : 2021,02,22,3,49,59,546
+----------------
+the abnormal delay : 13367
+the abnormal send_time : 2021,02,22,3,49,50,180
+the abnormal recv_time : 2021,02,22,3,50,3,547
+----------------
+the abnormal delay : 11484
+the abnormal send_time : 2021,02,22,14,34,56,302
+the abnormal recv_time : 2021,02,22,14,35,7,786
+----------------
+the abnormal delay : 13216
+the abnormal send_time : 2021,02,22,14,35,7,44
+the abnormal recv_time : 2021,02,22,14,35,20,260
+----------------
+the abnormal delay : 10734
+the abnormal send_time : 2021,02,22,14,35,16,332
+the abnormal recv_time : 2021,02,22,14,35,27,66
+----------------
+the abnormal delay : 10780
+the abnormal send_time : 2021,02,22,15,46,0,135
+the abnormal recv_time : 2021,02,22,15,46,10,915
+----------------
+12749
+10295
+12774
+57451
+53882
+51003
+46366
+29971
+31831
+13309
+17110
+18939
+20823
+22610
+26557
+25488
+19287
+13367
+11484
+13216
+10734
+10780
+AVG() delay : 557.4969
+SD : 563.0435151922096
+num of big_delay : 22
+big_delay : 0.0032477118
+loss : 2.7095375E-4

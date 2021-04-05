@@ -1,0 +1,72 @@
+size of sender : 6903
+num_of_sender : 12669
+the abnormal delay : 18227
+the abnormal send_time : 2021,02,22,0,45,11,574
+the abnormal recv_time : 2021,02,22,0,45,29,801
+----------------
+the abnormal delay : 17544
+the abnormal send_time : 2021,02,22,0,57,35,607
+the abnormal recv_time : 2021,02,22,0,57,53,151
+----------------
+the abnormal delay : 10437
+the abnormal send_time : 2021,02,22,1,2,15,839
+the abnormal recv_time : 2021,02,22,1,2,26,276
+----------------
+the abnormal delay : 13401
+the abnormal send_time : 2021,02,22,2,13,0,76
+the abnormal recv_time : 2021,02,22,2,13,13,477
+----------------
+the abnormal delay : 24067
+the abnormal send_time : 2021,02,22,2,14,10,79
+the abnormal recv_time : 2021,02,22,2,14,34,146
+----------------
+the abnormal delay : 14913
+the abnormal send_time : 2021,02,22,2,14,20,79
+the abnormal recv_time : 2021,02,22,2,14,34,992
+----------------
+the abnormal delay : 10371
+the abnormal send_time : 2021,02,22,3,22,34,467
+the abnormal recv_time : 2021,02,22,3,22,44,838
+----------------
+the abnormal delay : 10278
+the abnormal send_time : 2021,02,22,3,23,54,470
+the abnormal recv_time : 2021,02,22,3,24,4,748
+----------------
+the abnormal delay : 74144
+the abnormal send_time : 2021,02,22,3,48,9,608
+the abnormal recv_time : 2021,02,22,3,49,23,752
+----------------
+the abnormal delay : 64272
+the abnormal send_time : 2021,02,22,3,48,19,609
+the abnormal recv_time : 2021,02,22,3,49,23,881
+----------------
+the abnormal delay : 54513
+the abnormal send_time : 2021,02,22,3,48,29,610
+the abnormal recv_time : 2021,02,22,3,49,24,123
+----------------
+the abnormal delay : 15216
+the abnormal send_time : 2021,02,22,3,49,9,611
+the abnormal recv_time : 2021,02,22,3,49,24,827
+----------------
+the abnormal delay : 10648
+the abnormal send_time : 2021,02,22,15,45,47,17
+the abnormal recv_time : 2021,02,22,15,45,57,665
+----------------
+18227
+17544
+10437
+13401
+24067
+14913
+10371
+10278
+74144
+64272
+54513
+15216
+10648
+AVG() delay : 1993.0565
+SD : 633.6781517458212
+num of big_delay : 13
+big_delay : 0.0024308152
+loss : 0.12629253
