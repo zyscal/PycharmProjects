@@ -22,36 +22,49 @@ ax1 = axes[0]
 sum_3323_RTT = 0
 for i in value_port_3323:
     sum_3323_RTT += i
-print("avg() : ", sum_3323_RTT / len(value_port_3323))
+print("device1 avg() : ", sum_3323_RTT / len(value_port_3323))
 value_port_3323.sort()
-print(value_port_3323)
-print("len of value_port_3323 : ", len(value_port_3323))
+
+
+
 CDF_3323_RTT = []
 cha_3323_RTT = 1 / len(value_port_3323)
-print("cha", cha_3323_RTT)
+
 for i in range(1, len(value_port_3323) + 1):
     CDF_3323_RTT.append(i * cha_3323_RTT)
-print("len of CDF : ", len(CDF_3323_RTT))
-print("CDF_3323_RTT : ", CDF_3323_RTT)
+
+
 
 UpLink_3323_value.sort()
 sum_3323_UpLink_value = 0
 for i in UpLink_3323_value:
     sum_3323_UpLink_value += i
+print("device1 UL avg : ", sum_3323_UpLink_value / len(UpLink_3323_value))
+
+sum_3323_DownLink_value = 0
+for i in DownLink_3323_value:
+    sum_3323_DownLink_value += i
+print("device1 DL avg : ", sum_3323_DownLink_value / len(DownLink_3323_value))
+
+
 CDF_3323_UpLink = []
 cha_3323_UL = 1 / len(UpLink_3323_value)
 for i in range(1, len(UpLink_3323_value) + 1):
     CDF_3323_UpLink.append(i * cha_3323_UL)
 
 
+
+
 DownLink_3323_value.sort()
-sum_3323_DownLink_value = 0
-for i in DownLink_3323_value:
-    sum_3323_DownLink_value += i
 CDF_3323_DownLink = []
 cha_3323_DL = 1 / len(DownLink_3323_value)
 for i in range(1, len(DownLink_3323_value) + 1):
     CDF_3323_DownLink.append(i * cha_3323_DL)
+
+DownLink_sum = 0
+for i in CDF_3323_DownLink:
+    DownLink_sum += i
+
 
 UpLink_3323_value_lg = []
 DownLink_3323_value_lg = []
@@ -96,22 +109,24 @@ ax2 = axes[1]
 sum_3322_RTT = 0
 for i in value_port_3322:
     sum_3322_RTT += i
-print("avg() : ", sum_3322_RTT / len(value_port_3322))
+print("device2 avg() : ", sum_3322_RTT / len(value_port_3322))
+
 value_port_3322.sort()
-print(value_port_3322)
-print("len of value_port_3322 : ", len(value_port_3322))
+
+
 CDF_3322_RTT = []
 cha_3322_RTT = 1 / len(value_port_3322)
-print("cha", cha_3322_RTT)
+
 for i in range(1, len(value_port_3322) + 1):
     CDF_3322_RTT.append(i * cha_3322_RTT)
-print("len of CDF : ", len(CDF_3322_RTT))
-print("CDF_3322_RTT : ", CDF_3322_RTT)
+
+
 
 UpLink_3322_value.sort()
 sum_3322_UpLink_value = 0
 for i in UpLink_3322_value:
     sum_3322_UpLink_value += i
+print("device2 UL avg : ", sum_3322_UpLink_value / len(UpLink_3322_value))
 CDF_3322_UpLink = []
 cha_3322_UL = 1 / len(UpLink_3322_value)
 for i in range(1, len(UpLink_3322_value) + 1):
@@ -120,6 +135,7 @@ DownLink_3322_value.sort()
 sum_3322_DownLink_value = 0
 for i in DownLink_3322_value:
     sum_3322_DownLink_value += i
+print("device2 DL avg : ", sum_3322_DownLink_value / len(DownLink_3322_value))
 CDF_3322_DownLink = []
 cha_3322_DL = 1 / len(DownLink_3322_value)
 for i in range(1, len(DownLink_3322_value) + 1):
