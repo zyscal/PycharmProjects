@@ -82,7 +82,6 @@ for i in range(0, n):
         else :
             retransmission_rtts.append(0)
     axes[i].plot(df["datetime"], df["values"], label="read1_RTT", color='b', alpha=0.6)
-    # axes[i].scatter(df["datetime"], df["values"], label="read1_RTT", color='b', alpha=0.4)
     axes[i].scatter(retransmission_datetimes[i], retransmission_rtts, color='r', s=3)
     axes[i].set_ylim(0, 6000)
     axes[i].set_xlim(datetime_lists[i][0], datetime_lists[i][len(datetime_lists[i]) - 1])

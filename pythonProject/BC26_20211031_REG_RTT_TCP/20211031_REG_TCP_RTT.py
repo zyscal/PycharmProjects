@@ -44,20 +44,48 @@ def split_array_into(list, n) :
         begin = (i + 1) * step
     return lists
 
+#根据lista[[]] 将listb分割为对应份数
+def split_datetimes_by_datetime(lista, listb) :
+    lists = []
+    for i in lista :
+        min = i[0]
+        max = i[len(i) - 1]
+        temlist = []
+        for j in listb:
+            if j >= min and j <= max :
+                temlist.append(j)
+        lists.append(temlist)
+    return lists
+
+
+
 n = 6
-fig, axes = plt.subplots(n,1,figsize=(20,20))
+fig, axes = plt.subplots(n,1,figsize=(100,100))
 
 
 datetime_list = read_datetimes("BC26_20211031_REG_RTT_TCP_datas/ClientRegRTTDateTime.txt")
 RTT_list = read_delay("BC26_20211031_REG_RTT_TCP_datas/ClientRegRTT.txt")
+retransmission_datetime = read_datetimes("BC26_20211031_REG_RTT_TCP_datas/ClientRetransmission.txt")
+
 RTT_lists = split_array_into(RTT_list, n)
 datetime_lists = split_array_into(datetime_list, n)
+retransmission_datetimes = split_datetimes_by_datetime(datetime_lists, retransmission_datetime)
 
 size_of_legend = 10
 
 for i in range(0, n):
     df = pd.DataFrame({"values": RTT_lists[i], "datetime": datetime_lists[i]})
+    retransmission_rtts = []
+    for j in retransmission_datetimes[i] :
+        retransmission_rtt = df[df.datetime == j].index.tolist()
+        print(retransmission_rtt)
+        if len(retransmission_rtt) > 0:
+            retransmission_rtts.append(df["values"][retransmission_rtt[len(retransmission_rtt) - 1]])
+        else :
+            print("not found")
+            retransmission_rtts.append(0)
     axes[i].plot(df["datetime"], df["values"], label="Client_RTT", color='b', alpha=0.7)
+    axes[i].scatter(retransmission_datetimes[i], retransmission_rtts, color='r', s = 3)
     axes[i].legend(loc=1, prop={'size': size_of_legend})
 
 datetime_list = read_datetimes("BC26_20211031_REG_RTT_TCP_datas/ServerRegRTTDateTime.txt")
