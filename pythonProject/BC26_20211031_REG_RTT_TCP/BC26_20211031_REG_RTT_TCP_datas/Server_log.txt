@@ -1,0 +1,3 @@
+packet loss count : 1
+tcp downlink count : 5317
+packet loss rate : 1.8807598E-4
