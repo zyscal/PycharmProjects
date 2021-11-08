@@ -69,17 +69,15 @@ def find_RTT_by_datetime(retransmission_datetimes, df) :
             retransmission_rtts.append(0)
     return retransmission_rtts
 
-n = 6
-fig, axes = plt.subplots(n,1,figsize=(30,10))
+n = 2
+fig, axes = plt.subplots(n,1,figsize=(10,5))
 
 
-datetime_list = read_datetimes("BC26_20211031_REG_RTT_TCP_datas/ClientRegRTTDateTime.txt")
-RTT_list = read_delay("BC26_20211031_REG_RTT_TCP_datas/ClientRegRTT.txt")
-retransmission_datetime = read_datetimes("BC26_20211031_REG_RTT_TCP_datas/ClientRetransmission.txt")
+datetime_list = read_datetimes("BC26_20211108_2_REG_RTT_TCP_datas/ClientRegDateTime.txt")
+RTT_list = read_delay("BC26_20211108_2_REG_RTT_TCP_datas/ClientRegRTT.txt")
 
 RTT_lists = split_array_into(RTT_list, n)
 datetime_lists = split_array_into(datetime_list, n)
-retransmission_datetimes = split_datetimes_by_datetime(datetime_lists, retransmission_datetime)
 
 size_of_legend = 10
 size_of_rtt_point = 3
@@ -87,32 +85,25 @@ size_of_retransmission_point = 30
 
 for i in range(0, n):
     df = pd.DataFrame({"values": RTT_lists[i], "datetime": datetime_lists[i]})
-    retransmission_rtts = find_RTT_by_datetime(retransmission_datetimes, df)
     axes[i].plot(df["datetime"], df["values"], label="Client_RTT", color='b', alpha=0.7)
     axes[i].scatter(df["datetime"], df["values"], label="Client_RTT", color='b', s=size_of_rtt_point)
-    axes[i].scatter(retransmission_datetimes[i], retransmission_rtts, color='r', s = size_of_retransmission_point)
-
-datetime_list = read_datetimes("BC26_20211031_REG_RTT_TCP_datas/ServerRegRTTDateTime.txt")
-RTT_list = read_delay("BC26_20211031_REG_RTT_TCP_datas/ServerRegRTT.txt")
+    axes[i].set_ylim(0, 10000)
+datetime_list = read_datetimes("BC26_20211108_2_REG_RTT_TCP_datas/ServerRegDateTime.txt")
+RTT_list = read_delay("BC26_20211108_2_REG_RTT_TCP_datas/ServerRegRTT.txt")
 RTT_lists = split_array_into(RTT_list, n)
 datetime_lists = split_array_into(datetime_list, n)
-retransmission_datetime = read_datetimes("BC26_20211031_REG_RTT_TCP_datas/ServerRetransmission.txt")
-retransmission_datetimes = split_datetimes_by_datetime(datetime_lists, retransmission_datetime)
-Server_packet_loss = read_datetimes("BC26_20211031_REG_RTT_TCP_datas/Server_packet_loss.txt")
+Server_packet_loss = read_datetimes("BC26_20211108_2_REG_RTT_TCP_datas/Server_packet_loss.txt")
 Server_packet_loss_datetims = split_datetimes_by_datetime(datetime_lists, Server_packet_loss)
 
 for i in range(0, n):
     df = pd.DataFrame({"values": RTT_lists[i], "datetime": datetime_lists[i]})
-    retransmission_rtts = find_RTT_by_datetime(retransmission_datetimes, df)
     axes[i].plot(df["datetime"], df["values"], label="Server_RTT", color='g', alpha=0.7)
     axes[i].scatter(df["datetime"], df["values"], label="Server_RTT", color='g', alpha=0.7, s=size_of_rtt_point)
-    axes[i].scatter(retransmission_datetimes[i], retransmission_rtts, color='r', s = size_of_retransmission_point)
     axes[i].vlines(Server_packet_loss_datetims[i], 0, 6000, color='r')
-    axes[i].set_ylim(0, 6000)
+    axes[i].set_ylim(0, 10000)
     axes[i].legend(loc=1, prop={'size': size_of_legend})
 
-
-axes[0].set_title("20211031 21:30-12:30 LwM2M/CoAP/TCP/NB-IoT BC26 REG RTT", fontsize=20)
+axes[0].set_title("20211107 21:00-7:00 LwM2M/CoAP/TCP/NB-IoT BC26 REG RTT", fontsize=20)
 plt.show()
 
 

@@ -1,0 +1,3 @@
+size of UpLinkArray : 0
+AVG() : 3761.3704545454543
+count of Retransmission is : 0

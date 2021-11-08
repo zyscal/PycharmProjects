@@ -73,9 +73,9 @@ n = 6
 fig, axes = plt.subplots(n,1,figsize=(30,10))
 
 
-datetime_list = read_datetimes("BC26_20211031_REG_RTT_TCP_datas/ClientRegRTTDateTime.txt")
-RTT_list = read_delay("BC26_20211031_REG_RTT_TCP_datas/ClientRegRTT.txt")
-retransmission_datetime = read_datetimes("BC26_20211031_REG_RTT_TCP_datas/ClientRetransmission.txt")
+datetime_list = read_datetimes("BC26_20211105_REG_RTT_TCP_datas/ClientRegDateTime.txt")
+RTT_list = read_delay("BC26_20211105_REG_RTT_TCP_datas/ClientRegRTT.txt")
+retransmission_datetime = read_datetimes("BC26_20211105_REG_RTT_TCP_datas/ClientRetransmissions.txt")
 
 RTT_lists = split_array_into(RTT_list, n)
 datetime_lists = split_array_into(datetime_list, n)
@@ -92,13 +92,13 @@ for i in range(0, n):
     axes[i].scatter(df["datetime"], df["values"], label="Client_RTT", color='b', s=size_of_rtt_point)
     axes[i].scatter(retransmission_datetimes[i], retransmission_rtts, color='r', s = size_of_retransmission_point)
 
-datetime_list = read_datetimes("BC26_20211031_REG_RTT_TCP_datas/ServerRegRTTDateTime.txt")
-RTT_list = read_delay("BC26_20211031_REG_RTT_TCP_datas/ServerRegRTT.txt")
+datetime_list = read_datetimes("BC26_20211105_REG_RTT_TCP_datas/ServerRegDateTime.txt")
+RTT_list = read_delay("BC26_20211105_REG_RTT_TCP_datas/ServerRegRTT.txt")
 RTT_lists = split_array_into(RTT_list, n)
 datetime_lists = split_array_into(datetime_list, n)
-retransmission_datetime = read_datetimes("BC26_20211031_REG_RTT_TCP_datas/ServerRetransmission.txt")
+retransmission_datetime = read_datetimes("BC26_20211105_REG_RTT_TCP_datas/ServerRetransmissions.txt")
 retransmission_datetimes = split_datetimes_by_datetime(datetime_lists, retransmission_datetime)
-Server_packet_loss = read_datetimes("BC26_20211031_REG_RTT_TCP_datas/Server_packet_loss.txt")
+Server_packet_loss = read_datetimes("BC26_20211105_REG_RTT_TCP_datas/Server_packet_loss.txt")
 Server_packet_loss_datetims = split_datetimes_by_datetime(datetime_lists, Server_packet_loss)
 
 for i in range(0, n):
@@ -112,7 +112,7 @@ for i in range(0, n):
     axes[i].legend(loc=1, prop={'size': size_of_legend})
 
 
-axes[0].set_title("20211031 21:30-12:30 LwM2M/CoAP/TCP/NB-IoT BC26 REG RTT", fontsize=20)
+axes[0].set_title("20211105 22:00-13:30 LwM2M/CoAP/TCP/NB-IoT BC26 REG RTT", fontsize=20)
 plt.show()
 
 

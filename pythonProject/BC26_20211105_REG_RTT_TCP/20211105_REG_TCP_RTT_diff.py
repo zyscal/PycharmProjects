@@ -2,13 +2,13 @@ import os
 import sys
 
 import matplotlib.pyplot as plt
-
 from matplotlib.font_manager import FontProperties
 import matplotlib
 import numpy as np
 from datetime import datetime
 import pandas as pd
-#make functions
+
+
 def read_datetimes(datetime_file):
     datetime_list = []
     with open(datetime_file, 'r') as f:
@@ -28,7 +28,7 @@ def read_datetimes(datetime_file):
 def read_delay(delay_file):
     delay_list = []
     with open(delay_file, 'r') as f:
-        all_delay = f.read().split(',', -1)
+        all_delay = f.read().split('\n', -1)
     for i in all_delay:
         if i == '':
             break;
@@ -57,35 +57,45 @@ def split_datetimes_by_datetime(lista, listb) :
         lists.append(temlist)
     return lists
 
-## import data
-n = 4
-RTT_list = read_delay("BC26_20211101_REG_RTT_UDP_datas/ClinetRTT.txt")
-datetime_list = read_datetimes("BC26_20211101_REG_RTT_UDP_datas/ClinetRTT_datetime.txt")
-retransmission_datetime = read_datetimes("BC26_20211101_REG_RTT_UDP_datas/retransmission_file.txt")
+def find_diff(RTT_Client, RTT_Server):
+    if len(RTT_Client) != len(RTT_Server) :
+        print("there is something wrong , length of Clinet RTT != length of Server")
+        return []
+    RTT_diff = []
+    j = 0
+    while j < len(RTT_Client) :
+        RTT_diff.append(RTT_Client[j] - RTT_Server[j])
+        j += 1
+    return RTT_diff
+
+n = 6
+fig, axes = plt.subplots(n,1,figsize=(30,10))
+size_of_legend = 10
+size_of_rtt_point = 3
+size_of_retransmission_point = 30
+
+
+datetime_list = read_datetimes("BC26_20211105_REG_RTT_TCP_datas/ClientRegDateTime_without_retransmission.txt")
+RTT_list = read_delay("BC26_20211105_REG_RTT_TCP_datas/ClientRegRTT_without_retransmission.txt")
+
 RTT_lists = split_array_into(RTT_list, n)
 datetime_lists = split_array_into(datetime_list, n)
-retransmission_datetimes = split_datetimes_by_datetime(datetime_lists, retransmission_datetime)
 
+RTT_list_server = read_delay("BC26_20211105_REG_RTT_TCP_datas/ServerRegRTT_without_retransmission.txt")
+RTT_lists_server = split_array_into(RTT_list_server, n)
 
-
-
-## make plot
-fig, axes = plt.subplots(n, 1, figsize=(30,10))
 
 for i in range(0, n):
-    df = pd.DataFrame({"values": RTT_lists[i], "datetime": datetime_lists[i]})
-    retransmission_rtts = []
-    for j in retransmission_datetimes[i] :
-        retransmission_rtt = df[df.datetime == j].index.tolist()
-        if len(retransmission_rtt) > 0:
-            retransmission_rtts.append(df["values"][retransmission_rtt[len(retransmission_rtt) - 1]])
-        else :
-            retransmission_rtts.append(0)
-    axes[i].plot(df["datetime"], df["values"], label="read1_RTT", color='b', alpha=0.6)
-    axes[i].scatter(retransmission_datetimes[i], retransmission_rtts, color='r', s=3)
-    axes[i].set_ylim(0, 6000)
-    axes[i].set_xlim(datetime_lists[i][0], datetime_lists[i][len(datetime_lists[i]) - 1])
+    RTT_diff = find_diff(RTT_lists[i], RTT_lists_server[i])
+    print(RTT_diff)
+    df = pd.DataFrame({"values": RTT_diff, "datetime": datetime_lists[i]})
+    axes[i].plot(df["datetime"], df["values"], label="Server_RTT", color='g', alpha=0.7)
+    axes[i].scatter(df["datetime"], df["values"], label="Server_RTT", color='g', alpha=0.7, s=size_of_rtt_point)
+    axes[i].set_ylim(-1000, 10000)
+    axes[i].legend(loc=1, prop={'size': size_of_legend})
 
 
-axes[0].set_title("22:30 - 13:30 LwM2M/CoAP/UDP/NB-IoT BC26 REG RTT", fontsize=20)
+axes[0].set_title("20211105 22:00-13:30 LwM2M/CoAP/TCP/NB-IoT BC26 REG RTT diff", fontsize=20)
 plt.show()
+
+
