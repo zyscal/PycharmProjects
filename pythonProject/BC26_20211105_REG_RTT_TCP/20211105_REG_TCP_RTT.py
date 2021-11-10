@@ -76,7 +76,7 @@ fig, axes = plt.subplots(n,1,figsize=(30,10))
 datetime_list = read_datetimes("BC26_20211105_REG_RTT_TCP_datas/ClientRegDateTime.txt")
 RTT_list = read_delay("BC26_20211105_REG_RTT_TCP_datas/ClientRegRTT.txt")
 retransmission_datetime = read_datetimes("BC26_20211105_REG_RTT_TCP_datas/ClientRetransmissions.txt")
-
+print("client std : ", np.std(RTT_list))
 RTT_lists = split_array_into(RTT_list, n)
 datetime_lists = split_array_into(datetime_list, n)
 retransmission_datetimes = split_datetimes_by_datetime(datetime_lists, retransmission_datetime)
@@ -94,6 +94,7 @@ for i in range(0, n):
 
 datetime_list = read_datetimes("BC26_20211105_REG_RTT_TCP_datas/ServerRegDateTime.txt")
 RTT_list = read_delay("BC26_20211105_REG_RTT_TCP_datas/ServerRegRTT.txt")
+print("Server std : ", np.std(RTT_list))
 RTT_lists = split_array_into(RTT_list, n)
 datetime_lists = split_array_into(datetime_list, n)
 retransmission_datetime = read_datetimes("BC26_20211105_REG_RTT_TCP_datas/ServerRetransmissions.txt")

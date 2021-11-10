@@ -66,6 +66,7 @@ RTT_lists = split_array_into(RTT_list, n)
 datetime_lists = split_array_into(datetime_list, n)
 retransmission_datetimes = split_datetimes_by_datetime(datetime_lists, retransmission_datetime)
 
+print("Client std : ", np.std(RTT_list))
 
 
 

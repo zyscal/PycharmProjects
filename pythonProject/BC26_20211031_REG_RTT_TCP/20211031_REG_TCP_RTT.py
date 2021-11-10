@@ -61,11 +61,9 @@ def find_RTT_by_datetime(retransmission_datetimes, df) :
     retransmission_rtts = []
     for j in retransmission_datetimes[i] :
         retransmission_rtt = df[df.datetime == j].index.tolist()
-        print(retransmission_rtt)
         if len(retransmission_rtt) > 0:
             retransmission_rtts.append(df["values"][retransmission_rtt[len(retransmission_rtt) - 1]])
         else :
-            print("not found")
             retransmission_rtts.append(0)
     return retransmission_rtts
 
@@ -76,10 +74,10 @@ fig, axes = plt.subplots(n,1,figsize=(30,10))
 datetime_list = read_datetimes("BC26_20211031_REG_RTT_TCP_datas/ClientRegRTTDateTime.txt")
 RTT_list = read_delay("BC26_20211031_REG_RTT_TCP_datas/ClientRegRTT.txt")
 retransmission_datetime = read_datetimes("BC26_20211031_REG_RTT_TCP_datas/ClientRetransmission.txt")
-
 RTT_lists = split_array_into(RTT_list, n)
 datetime_lists = split_array_into(datetime_list, n)
 retransmission_datetimes = split_datetimes_by_datetime(datetime_lists, retransmission_datetime)
+print("Client RTT std : ", np.std(RTT_list))
 
 size_of_legend = 10
 size_of_rtt_point = 3
@@ -100,6 +98,7 @@ retransmission_datetime = read_datetimes("BC26_20211031_REG_RTT_TCP_datas/Server
 retransmission_datetimes = split_datetimes_by_datetime(datetime_lists, retransmission_datetime)
 Server_packet_loss = read_datetimes("BC26_20211031_REG_RTT_TCP_datas/Server_packet_loss.txt")
 Server_packet_loss_datetims = split_datetimes_by_datetime(datetime_lists, Server_packet_loss)
+print("Server RTT std : ", np.std(RTT_list))
 
 for i in range(0, n):
     df = pd.DataFrame({"values": RTT_lists[i], "datetime": datetime_lists[i]})

@@ -96,11 +96,11 @@ size_of_retransmission_point = 30
 RTT_list_server = read_delay("BC26_20211031_REG_RTT_TCP_datas/ServerRegRTT_without_retransmission.txt")
 RTT_lists_server = split_array_into(RTT_list_server, n)
 
+diff_all = []
+
 for i in range(0, n):
     RTT_diff = find_diff(RTT_lists[i], RTT_lists_server[i])
-    print(RTT_lists[i])
-    print(RTT_lists_server[i])
-    print(RTT_diff)
+    diff_all.append(RTT_diff)
     df = pd.DataFrame({"values": RTT_diff, "datetime": datetime_lists[i]})
     axes[i].plot(df["datetime"], df["values"], label="Server_RTT", color='y', alpha=0.7)
     axes[i].scatter(df["datetime"], df["values"], label="Server_RTT", color='y', alpha=0.7, s=size_of_rtt_point)
@@ -108,7 +108,8 @@ for i in range(0, n):
     axes[i].set_ylim(-1000, 10000)
     axes[i].legend(loc=1, prop={'size': size_of_legend})
 
-
+print("AVG diff is : ", np.average(diff_all))
+print("std : ", np.std(diff_all))
 axes[0].set_title("20211031 21:30-12:30 LwM2M/CoAP/TCP/NB-IoT BC26 REG RTT diff", fontsize=20)
 plt.show()
 

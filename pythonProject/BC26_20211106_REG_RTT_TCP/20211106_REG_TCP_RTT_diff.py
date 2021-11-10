@@ -109,15 +109,19 @@ RTT_lists_server = split_array_into(RTT_list_server, n)
 # datetime_lists = split_array_into(datetime_list, n)
 # Server_packet_loss = read_datetimes("BC26_20211106_REG_RTT_TCP_datas/Server_packet_loss.txt")
 # Server_packet_loss_datetims = split_datetimes_by_datetime(datetime_lists, Server_packet_loss)
+diff_all = []
 
 for i in range(0, n):
     RTT_diff = find_diff(RTT_lists[i], RTT_lists_server[i])
+    diff_all.append(RTT_diff)
     df = pd.DataFrame({"values": RTT_diff, "datetime": datetime_lists[i]})
     axes[i].plot(df["datetime"], df["values"], label="Server_Client_RTT_diff", color='y', alpha=0.7)
     axes[i].scatter(df["datetime"], df["values"], label="Server_Client_RTT_diff", color='y', alpha=0.7, s=size_of_rtt_point)
     axes[i].set_ylim(-2000, 10000)
     axes[i].hlines(y=0, xmin=datetime_lists[i][0], xmax=datetime_lists[i][len(datetime_lists[i]) - 1])
     axes[i].legend(loc=1, prop={'size': size_of_legend})
+print("diff avg ", np.average(diff_all))
+print("diff std ", np.std(diff_all))
 
 axes[0].set_title("20211106 20:00-10:00 LwM2M/CoAP/TCP/NB-IoT BC26 REG RTT diff", fontsize=20)
 plt.show()
