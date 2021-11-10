@@ -89,8 +89,9 @@ for i in range(0, n):
     RTT_diff = find_diff(RTT_lists[i], RTT_lists_server[i])
     print(RTT_diff)
     df = pd.DataFrame({"values": RTT_diff, "datetime": datetime_lists[i]})
-    axes[i].plot(df["datetime"], df["values"], label="Server_RTT", color='g', alpha=0.7)
-    axes[i].scatter(df["datetime"], df["values"], label="Server_RTT", color='g', alpha=0.7, s=size_of_rtt_point)
+    axes[i].plot(df["datetime"], df["values"], label="Server_RTT", color='y', alpha=0.7)
+    axes[i].scatter(df["datetime"], df["values"], label="Server_RTT", color='y', alpha=0.7, s=size_of_rtt_point)
+    axes[i].hlines(y=0, xmin=datetime_lists[i][0], xmax=datetime_lists[i][len(datetime_lists[i]) - 1])
     axes[i].set_ylim(-1000, 10000)
     axes[i].legend(loc=1, prop={'size': size_of_legend})
 

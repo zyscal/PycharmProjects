@@ -71,6 +71,9 @@ retransmission_datetimes = split_datetimes_by_datetime(datetime_lists, retransmi
 
 ## make plot
 fig, axes = plt.subplots(n, 1, figsize=(30,10))
+size_of_rtt_point = 3
+size_of_retransmission_point = 15
+size_of_legend = 10
 
 for i in range(0, n):
     df = pd.DataFrame({"values": RTT_lists[i], "datetime": datetime_lists[i]})
@@ -81,11 +84,13 @@ for i in range(0, n):
             retransmission_rtts.append(df["values"][retransmission_rtt[len(retransmission_rtt) - 1]])
         else :
             retransmission_rtts.append(0)
-    axes[i].plot(df["datetime"], df["values"], label="read1_RTT", color='b', alpha=0.6)
-    axes[i].scatter(retransmission_datetimes[i], retransmission_rtts, color='r', s=3)
-    axes[i].set_ylim(0, 6000)
+    axes[i].plot(df["datetime"], df["values"], label="Client_RTT", color='b', alpha=0.6)
+    axes[i].scatter(df["datetime"], df["values"], color='b', alpha=0.6, s=size_of_rtt_point)
+    axes[i].scatter(retransmission_datetimes[i], retransmission_rtts, color='r', s=size_of_retransmission_point)
+    axes[i].set_ylim(0, 10000)
     axes[i].set_xlim(datetime_lists[i][0], datetime_lists[i][len(datetime_lists[i]) - 1])
+    axes[i].legend(loc=1, prop={'size': size_of_legend})
 
 
-axes[0].set_title("22:30 - 13:30 LwM2M/CoAP/UDP/NB-IoT BC26 REG RTT", fontsize=20)
+axes[0].set_title("20211101 22:30 - 13:30 LwM2M/CoAP/UDP/NB-IoT BC26 REG RTT", fontsize=20)
 plt.show()

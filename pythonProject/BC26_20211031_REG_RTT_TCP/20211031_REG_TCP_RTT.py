@@ -108,7 +108,7 @@ for i in range(0, n):
     axes[i].scatter(df["datetime"], df["values"], label="Server_RTT", color='g', alpha=0.7, s=size_of_rtt_point)
     axes[i].scatter(retransmission_datetimes[i], retransmission_rtts, color='r', s = size_of_retransmission_point)
     axes[i].vlines(Server_packet_loss_datetims[i], 0, 6000, color='r')
-    axes[i].set_ylim(0, 6000)
+    axes[i].set_ylim(0, 10000)
     axes[i].legend(loc=1, prop={'size': size_of_legend})
 
 

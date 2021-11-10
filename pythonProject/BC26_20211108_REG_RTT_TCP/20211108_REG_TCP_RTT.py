@@ -113,7 +113,7 @@ for i in range(0, n):
     axes[i].plot(df["datetime"], df["values"], label="Server_RTT", color='g', alpha=0.5)
     axes[i].scatter(df["datetime"], df["values"], label="Server_RTT", color='g', alpha=0.5, s=size_of_rtt_point)
     axes[i].vlines(Server_packet_loss_datetims[i], 0, 10000, color='r')
-    axes[i].vlines(datetime_splited[i], 0, 10000, color='#A9A9A9', linestyle='--')
+    axes[i].vlines(datetime_splited[i], 0, 10000, color='#A9A9A9', linestyle='-',linewidth=5)
     axes[i].set_ylim(0, 10000)
     axes[i].legend(loc=1, prop={'size': size_of_legend})
 
