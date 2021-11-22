@@ -16,7 +16,7 @@ def read_datetimes(datetime_file):
         all_datetime = f.read().split('\n', -1)
     for i in all_datetime:
         if i == '':
-            break;
+            break
         single_datetime = i.split(',', -1)
         tem_datetime = datetime(year=int(single_datetime[0]), month=int(single_datetime[1]),
                                 day=int(single_datetime[2]),
@@ -32,7 +32,7 @@ def read_delay(delay_file):
         all_delay = f.read().split('\n', -1)
     for i in all_delay:
         if i == '':
-            break;
+            break
         delay_list.append(int(i))
     return delay_list
 
@@ -125,101 +125,101 @@ n = 6
 fig, axes = plt.subplots(n,1,figsize=(30,10))
 
 
-datetime_list = read_datetimes("BC26_20211109_REG_RTT_TCP_datas/ClientRegDateTime.txt")
-RTT_list = read_delay("BC26_20211109_REG_RTT_TCP_datas/ClientRegRTT.txt")
-datetime_lists = split_datetime(datetime_list, n)
-RTT_lists = split_rtt_by_datetime(RTT_list, datetime_lists)
+UL_datetime_list = read_datetimes("BC26_20211109_REG_RTT_TCP_datas/UL_Datetime.txt")
+UL_delay_list = read_delay("BC26_20211109_REG_RTT_TCP_datas/UL_Delay.txt")
+UL_datetime_lists = split_datetime(UL_datetime_list, n)
+UL_delay_lists = split_rtt_by_datetime(UL_delay_list, UL_datetime_lists)
 
-retransmission_datetime = read_datetimes("BC26_20211109_REG_RTT_TCP_datas/ClientRetransmissions.txt")
-retransmission_datetimes = split_datetimes_by_datetime(datetime_lists, retransmission_datetime)
+# retransmission_datetime = read_datetimes("BC26_20211109_REG_RTT_TCP_datas/ClientRetransmissions.txt")
+# retransmission_datetimes = split_datetimes_by_datetime(datetime_lists, retransmission_datetime)
 
 # 创建时间间隔
 datetime_change = []
-datetime_begin = datetime_list[0]
+datetime_begin = UL_datetime_list[0]
 datetime_interval = timedelta(minutes=60)
 for i in range(1, 12):
     datetime_change.append(datetime_begin + datetime_interval * i)
-datetime_splited = split_datetimes_by_datetime(datetime_lists, datetime_change)
+datetime_splited = split_datetimes_by_datetime(UL_datetime_lists, datetime_change)
 
-#根据时间间隔对RTT_list进行分割，查看没种间隔下进行了多少次的数据测量
-test_times = []
-rtt_splited_by_60_client = split_rtt_by_interval(RTT_list, datetime_list, datetime_change)
-print("client 测试次数")
-for i in rtt_splited_by_60_client :
-    print(len(i))
-    test_times.append(len(i))
-print("client rtt 均值")
+# #根据时间间隔对RTT_list进行分割，查看没种间隔下进行了多少次的数据测量
+# test_times = []
+rtt_splited_by_60_client  = split_rtt_by_interval(UL_delay_list, UL_datetime_list, datetime_change)
+# print("client 测试次数")
+# for i in rtt_splited_by_60_client :
+#     print(len(i))
+#     test_times.append(len(i))
+print("UL 均值")
 for i in rtt_splited_by_60_client :
     print(int(np.average(i)))
-print("client rtt std")
+print("UL std")
 for i in rtt_splited_by_60_client :
     print(int(np.std(i)))
-retransmission_splited_by_60 = split_datetime_by_change(datetime_change, retransmission_datetime)
-print("client retransmission")
-j = 0
-for i in retransmission_splited_by_60 :
-    print(int(len(i) / test_times[j] * 10000) / 100, "%")
-    j += 1
+# retransmission_splited_by_60 = split_datetime_by_change(datetime_change, retransmission_datetime)
+# print("client retransmission")
+# j = 0
+# for i in retransmission_splited_by_60 :
+#     print(int(len(i) / test_times[j] * 10000) / 100, "%")
+#     j += 1
 
 
-size_of_legend = 5
+size_of_legend = 10
 size_of_rtt_point = 3
 size_of_retransmission_point = 30
 
 for i in range(0, n):
-    df = pd.DataFrame({"values": RTT_lists[i], "datetime": datetime_lists[i]})
-    retransmission_rtts = find_RTT_by_datetime(retransmission_datetimes, df)
-    axes[i].plot(df["datetime"], df["values"], label="Client_RTT", color='b', alpha=0.7)
-    axes[i].scatter(df["datetime"], df["values"], label="Client_RTT", color='b', s=size_of_rtt_point)
-    axes[i].scatter(retransmission_datetimes[i], retransmission_rtts, color='r', s = size_of_retransmission_point)
+    df = pd.DataFrame({"values": UL_delay_lists[i], "datetime": UL_datetime_lists[i]})
+    # retransmission_rtts = find_RTT_by_datetime(retransmission_datetimes, df)
+    axes[i].plot(df["datetime"], df["values"], label="UL_delay", color='y', alpha=0.7)
+    axes[i].scatter(df["datetime"], df["values"], color='y', s=size_of_rtt_point)
+    # axes[i].scatter(retransmission_datetimes[i], retransmission_rtts, color='r', s = size_of_retransmission_point)
 
 
-datetime_list = read_datetimes("BC26_20211109_REG_RTT_TCP_datas/ServerRegDateTime.txt")
-RTT_list = read_delay("BC26_20211109_REG_RTT_TCP_datas/ServerRegRTT.txt")
-datetime_lists = split_datetime(datetime_list, n)
-RTT_lists = split_rtt_by_datetime(RTT_list, datetime_lists)
+DL_datetime_list = read_datetimes("BC26_20211109_REG_RTT_TCP_datas/DL_Datetime.txt")
+DL_delay_list = read_delay("BC26_20211109_REG_RTT_TCP_datas/DL_Delay.txt")
+DL_datetime_lists = split_datetime(DL_datetime_list, n)
+DL_delay_lists = split_rtt_by_datetime(DL_delay_list, DL_datetime_lists)
 
-retransmission_datetime = read_datetimes("BC26_20211109_REG_RTT_TCP_datas/ServerRetransmissions.txt")
-retransmission_datetimes = split_datetimes_by_datetime(datetime_lists, retransmission_datetime)
+# retransmission_datetime = read_datetimes("BC26_20211109_REG_RTT_TCP_datas/ServerRetransmissions.txt")
+# retransmission_datetimes = split_datetimes_by_datetime(datetime_lists, retransmission_datetime)
 
-Server_packet_loss = read_datetimes("BC26_20211109_REG_RTT_TCP_datas/Server_packet_loss.txt")
-Server_packet_loss_datetims = split_datetimes_by_datetime(datetime_lists, Server_packet_loss)
+# Server_packet_loss = read_datetimes("BC26_20211109_REG_RTT_TCP_datas/Server_packet_loss.txt")
+# Server_packet_loss_datetims = split_datetimes_by_datetime(datetime_lists, Server_packet_loss)
 
-rtt_splited_by_60_client = split_rtt_by_interval(RTT_list, datetime_list, datetime_change)
-print("server rtt 均值")
+rtt_splited_by_60_client = split_rtt_by_interval(DL_delay_list, DL_datetime_list, datetime_change)
+print("DL 均值")
 for i in rtt_splited_by_60_client :
     print(int(np.average(i)))
-print("server rtt std")
+print("DL std")
 for i in rtt_splited_by_60_client :
     print(int(np.std(i)))
-retransmission_splited_by_60 = split_datetime_by_change(datetime_change, retransmission_datetime)
-print("server retransmission")
-j = 0
-for i in retransmission_splited_by_60 :
-    print(int(len(i) / test_times[j] * 10000) / 100, "%")
-    j += 1
-print("server loss")
-Server_loss_splited_by_60 = split_datetime_by_change(datetime_change, Server_packet_loss)
-j = 0
-for i in Server_loss_splited_by_60 :
-    print(int(len(i) / test_times[j] * 10000) / 100, "%")
-    j += 1
+# retransmission_splited_by_60 = split_datetime_by_change(datetime_change, retransmission_datetime)
+# print("server retransmission")
+# j = 0
+# for i in retransmission_splited_by_60 :
+#     print(int(len(i) / test_times[j] * 10000) / 100, "%")
+#     j += 1
+# print("server loss")
+# Server_loss_splited_by_60 = split_datetime_by_change(datetime_change, Server_packet_loss)
+# j = 0
+# for i in Server_loss_splited_by_60 :
+#     print(int(len(i) / test_times[j] * 10000) / 100, "%")
+#     j += 1
 
 
 
 for i in range(0, n):
-    df = pd.DataFrame({"values": RTT_lists[i], "datetime": datetime_lists[i]})
-    retransmission_rtts = find_RTT_by_datetime(retransmission_datetimes, df)
-    axes[i].plot(df["datetime"], df["values"], label="Server_RTT", color='g', alpha=0.5)
-    axes[i].scatter(df["datetime"], df["values"], label="Server_RTT", color='g', alpha=0.5, s=size_of_rtt_point)
-    axes[i].scatter(retransmission_datetimes[i], retransmission_rtts, color='r', s = size_of_retransmission_point)
-    axes[i].vlines(Server_packet_loss_datetims[i], 0, 10000, color='r')
+    df = pd.DataFrame({"values": DL_delay_lists[i], "datetime": DL_datetime_lists[i]})
+    # retransmission_rtts = find_RTT_by_datetime(retransmission_datetimes, df)
+    axes[i].plot(df["datetime"], df["values"], label="DL_delay", color='purple', alpha=0.5)
+    axes[i].scatter(df["datetime"], df["values"],  color='purple', alpha=0.5, s=size_of_rtt_point)
+    # axes[i].scatter(retransmission_datetimes[i], retransmission_rtts, color='r', s = size_of_retransmission_point)
+    # axes[i].vlines(Server_packet_loss_datetims[i], 0, 10000, color='r')
     axes[i].vlines(datetime_splited[i], 0, 10000, color='#A9A9A9', linestyle='-',linewidth=5)
     axes[i].set_ylim(0, 10000)
     axes[i].legend(loc=1, prop={'size': size_of_legend})
 
 
-axes[0].set_title("20211109 22:30-10:00 LwM2M/CoAP/TCP/NB-IoT BC26 REG RTT", fontsize=20)
+axes[0].set_title("20211109 22:30-10:00 LwM2M/CoAP/TCP/NB-IoT BC26 REG UL_DL_delay", fontsize=20)
 plt.show()
 
 

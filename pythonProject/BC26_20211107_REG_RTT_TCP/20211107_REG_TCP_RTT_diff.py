@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties
 import matplotlib
 import numpy as np
-from datetime import datetime, timedelta
+from datetime import datetime
 import pandas as pd
 
 
@@ -56,7 +56,6 @@ def split_datetimes_by_datetime(lista, listb) :
                 temlist.append(j)
         lists.append(temlist)
     return lists
-
 
 def find_RTT_by_datetime(retransmission_datetimes, df) :
     retransmission_rtts = []
@@ -112,77 +111,48 @@ def split_rtt_by_datetime(RTT_list, datatime_lists) :
         RTT_lists.append(tem_RTT_lists)
     return RTT_lists
 
-def split_rtt_by_interval (rtt_list, datetime_list, datetime_change) :
-    rtt_lists = []
-    datetime_list_iter = 0
-    for i in datetime_change :
-        tem_rtt_lists = []
-        while  datetime_list_iter < len(datetime_list) and  datetime_list[datetime_list_iter] < i:
-            tem_rtt_lists.append(rtt_list[datetime_list_iter])
-            datetime_list_iter += 1
-        rtt_lists.append(tem_rtt_lists)
-    return rtt_lists
-
-
 
 n = 6
 fig, axes = plt.subplots(n,1,figsize=(30,10))
 
 
-datetime_list = read_datetimes("BC26_20211108_REG_RTT_TCP_datas/ClientRegDateTime.txt")
-RTT_list = read_delay("BC26_20211108_REG_RTT_TCP_datas/ClientRegRTT.txt")
+datetime_list = read_datetimes("BC26_20211107_REG_RTT_TCP_datas/ClientRegDateTime.txt")
+RTT_list = read_delay("BC26_20211107_REG_RTT_TCP_datas/ClientRegRTT.txt")
+
+
 datetime_lists = split_datetime(datetime_list, n)
 RTT_lists = split_rtt_by_datetime(RTT_list, datetime_lists)
 
-# 创建时间间隔
-datetime_change = []
-datetime_begin = datetime_list[0]
-datetime_interval = timedelta(minutes=50)
-for i in range(1, 21):
-    datetime_change.append(datetime_begin + datetime_interval * i)
-datetime_splited = split_datetimes_by_datetime(datetime_lists, datetime_change)
 
-
-
-size_of_legend = 5
+size_of_legend = 10
 size_of_rtt_point = 3
 size_of_retransmission_point = 30
 
-
-RTT_list_server = read_delay("BC26_20211108_REG_RTT_TCP_datas/ServerRegRTT_without_retransmission.txt")
+RTT_list_server = read_delay("BC26_20211107_REG_RTT_TCP_datas/ServerRegRTT_without_retransmission.txt")
 RTT_lists_server = split_rtt_by_datetime(RTT_list_server, datetime_lists)
 
-
 diff_all = []
-diff_datetime = []
-
 for i in range(0, n):
     RTT_diff = find_diff(RTT_lists[i], RTT_lists_server[i])
-    for j in RTT_diff :
+    for j in RTT_diff:
         diff_all.append(j)
-    for j in datetime_lists[i] :
-        diff_datetime.append(j)
     df = pd.DataFrame({"values": RTT_diff, "datetime": datetime_lists[i]})
     axes[i].plot(df["datetime"], df["values"], label="Server_Client_RTT_diff", color='y', alpha=0.7)
     axes[i].scatter(df["datetime"], df["values"], label="Server_Client_RTT_diff", color='y', alpha=0.7, s=size_of_rtt_point)
     axes[i].set_ylim(-2000, 10000)
     axes[i].hlines(y=0, xmin=datetime_lists[i][0], xmax=datetime_lists[i][len(datetime_lists[i]) - 1])
-    axes[i].vlines(datetime_splited[i], -2000, 10000, color='#A9A9A9', linestyle='-',linewidth=5)
     axes[i].legend(loc=1, prop={'size': size_of_legend})
 
-
-diff_50 = split_rtt_by_interval(diff_all, diff_datetime, datetime_change)
-print("diff_50 len is : ", len(diff_50))
-print("基站延时")
-for i in diff_50:
-    print(int(np.average(i)))
-print("标准差")
-for i in diff_50:
-    print(int(np.std(i)))
+diff_22 = diff_all[0:1101]
+diff_10 = diff_all[1101:]
 
 
+print("diff 10 avg : ", np.average(diff_10))
+print("diff 22 avg : ", np.average(diff_22))
+print("diff 10 std : ", np.std(diff_10))
+print("diff 22 std : ", np.std(diff_22))
 
-axes[0].set_title("20211108 17:00-10:00 LwM2M/CoAP/TCP/NB-IoT BC26 REG RTT diff" , fontsize=20)
+axes[0].set_title("20211107 21:00-7:00 LwM2M/CoAP/TCP/NB-IoT BC26 REG RTT diff", fontsize=20)
 plt.show()
 
 

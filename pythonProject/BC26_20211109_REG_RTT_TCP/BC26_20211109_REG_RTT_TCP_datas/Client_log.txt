@@ -1,3 +1,4 @@
-size of UpLinkArray : 1
-AVG() : 2726.544144144144
+total con is : 2219
+size of UpLinkArray : 0
+AVG() : 2720.838666065795
 count of Retransmission is : 0

@@ -104,18 +104,18 @@ n = 6
 fig, axes = plt.subplots(n,1,figsize=(30,10))
 
 
-datetime_list = read_datetimes("BC26_20211107_REG_RTT_TCP_datas/ClientRegDateTime.txt")
-RTT_list = read_delay("BC26_20211107_REG_RTT_TCP_datas/ClientRegRTT.txt")
-datetime_lists2 = split_datetime(datetime_list, n)
-RTT_lists2 = split_rtt_by_datetime(RTT_list, datetime_lists2)
+UL_datetime_list = read_datetimes("BC26_20211107_REG_RTT_TCP_datas/UL_Datetime.txt")
+UL_delay_list = read_delay("BC26_20211107_REG_RTT_TCP_datas/UL_Delay.txt")
+UL_datetime_lists = split_datetime(UL_datetime_list, n)
+UL_delay_lists = split_rtt_by_datetime(UL_delay_list, UL_datetime_lists)
 
-RTT_22 = RTT_list[0:1101]
-RTT_10 = RTT_list[1101:]
+RTT_22 = UL_delay_list[0:1101]
+RTT_10 = UL_delay_list[1101:]
 
-print("10 avg : ", np.average(RTT_10))
-print("22 avg : ", np.average(RTT_22))
-print("10 std : ", np.std(RTT_10))
-print("22 std : ", np.std(RTT_22))
+print("10 UL avg : ", np.average(RTT_10))
+print("22 UL avg : ", np.average(RTT_22))
+print("10 UL std : ", np.std(RTT_10))
+print("22 UL std : ", np.std(RTT_22))
 
 
 size_of_legend = 10
@@ -123,34 +123,34 @@ size_of_rtt_point = 3
 size_of_retransmission_point = 30
 
 for i in range(0, n):
-    df = pd.DataFrame({"values": RTT_lists2[i], "datetime": datetime_lists2[i]})
-    axes[i].plot(df["datetime"], df["values"], label="Client_RTT", color='b', alpha=0.7)
-    axes[i].scatter(df["datetime"], df["values"], label="Client_RTT", color='b', s=size_of_rtt_point)
+    df = pd.DataFrame({"values": UL_delay_lists[i], "datetime": UL_datetime_lists[i]})
+    axes[i].plot(df["datetime"], df["values"], label="UL_delay", color='y', alpha=0.7)
+    axes[i].scatter(df["datetime"], df["values"], color='y', s=size_of_rtt_point)
 
-datetime_list = read_datetimes("BC26_20211107_REG_RTT_TCP_datas/ServerRegDateTime.txt")
-RTT_list = read_delay("BC26_20211107_REG_RTT_TCP_datas/ServerRegRTT.txt")
-datetime_lists2 = split_datetime(datetime_list, n)
-RTT_lists2 = split_rtt_by_datetime(RTT_list, datetime_lists2)
-Server_packet_loss = read_datetimes("BC26_20211107_REG_RTT_TCP_datas/Server_packet_loss.txt")
-Server_packet_loss_datetims = split_datetimes_by_datetime(datetime_lists2, Server_packet_loss)
+DL_datetime_list = read_datetimes("BC26_20211107_REG_RTT_TCP_datas/DL_Datetime.txt")
+DL_delay_list = read_delay("BC26_20211107_REG_RTT_TCP_datas/DL_Delay.txt")
+DL_datetime_lists = split_datetime(DL_datetime_list, n)
+DL_delay_lists = split_rtt_by_datetime(DL_delay_list, DL_datetime_lists)
+# Server_packet_loss = read_datetimes("BC26_20211107_REG_RTT_TCP_datas/Server_packet_loss.txt")
+# Server_packet_loss_datetims = split_datetimes_by_datetime(datetime_lists2, Server_packet_loss)
+#
+RTT_22 = DL_delay_list[0:1101]
+RTT_10 = DL_delay_list[1101:]
 
-RTT_22 = RTT_list[0:1101]
-RTT_10 = RTT_list[1101:]
-
-print("server 10 avg : ", np.average(RTT_10))
-print("server 22 avg : ", np.average(RTT_22))
-print("server 10 std : ", np.std(RTT_10))
-print("server 22 std : ", np.std(RTT_22))
+print("DL 10 avg : ", np.average(RTT_10))
+print("DL 22 avg : ", np.average(RTT_22))
+print("DL 10 std : ", np.std(RTT_10))
+print("DL 22 std : ", np.std(RTT_22))
 
 
 for i in range(0, n):
-    df = pd.DataFrame({"values": RTT_lists2[i], "datetime": datetime_lists2[i]})
-    axes[i].plot(df["datetime"], df["values"], label="Server_RTT", color='g', alpha=0.7)
-    axes[i].scatter(df["datetime"], df["values"], label="Server_RTT", color='g', alpha=0.7, s=size_of_rtt_point)
-    axes[i].vlines(Server_packet_loss_datetims[i], 0, 6000, color='r')
+    df = pd.DataFrame({"values": DL_delay_lists[i], "datetime": DL_datetime_lists[i]})
+    axes[i].plot(df["datetime"], df["values"], label="DL_delay", color='purple', alpha=0.5)
+    axes[i].scatter(df["datetime"], df["values"],  color='purple', alpha=0.5, s=size_of_rtt_point)
+    # axes[i].vlines(Server_packet_loss_datetims[i], 0, 6000, color='r')
     axes[i].set_ylim(0, 10000)
     axes[i].legend(loc=1, prop={'size': size_of_legend})
-axes[0].set_title("20211107 21:00-7:00 LwM2M/CoAP/TCP/NB-IoT BC26 REG RTT", fontsize=20)
+axes[0].set_title("20211107 21:00-7:00 LwM2M/CoAP/TCP/NB-IoT BC26 REG UL_DL_delay", fontsize=20)
 
 
 plt.show()
